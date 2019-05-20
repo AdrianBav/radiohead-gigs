@@ -15,12 +15,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/albums', function () {
-    return App\Album::all();
+Route::get('/releases', function () {
+    return App\Release::all();
 });
 
-Route::get('/albums/{id}/songs', function ($albumId) {
-    return App\Album::find($albumId)->songs;
+Route::get('/releases/{id}/songs', function ($releaseId) {
+    return App\Release::find($releaseId)->songs;
 });
 
 Route::get('/concerts', function () {

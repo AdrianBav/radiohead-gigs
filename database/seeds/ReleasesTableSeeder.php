@@ -1,10 +1,10 @@
 <?php
 
 use App\Song;
-use App\Album;
+use App\Release;
 use Illuminate\Database\Seeder;
 
-class SongsTableSeeder extends Seeder
+class ReleasesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,8 +13,13 @@ class SongsTableSeeder extends Seeder
      */
     public function run()
     {
-        $album = Album::whereTitle('Pablo Honey')->first();
-        $album->songs()->saveMany([
+        // Albums...
+
+        Release::create([
+            'title' => 'Pablo Honey',
+            'isAlbum' => true,
+            'year' => 1993,
+        ])->songs()->saveMany([
             new Song(['track' => 1, 'title' => 'You']),
             new Song(['track' => 2, 'title' => 'Creep']),
             new Song(['track' => 3, 'title' => 'How Do You?']),
@@ -29,8 +34,11 @@ class SongsTableSeeder extends Seeder
             new Song(['track' => 12, 'title' => 'Blow Out']),
         ]);
 
-        $album = Album::whereTitle('The Bends')->first();
-        $album->songs()->saveMany([
+        Release::create([
+            'title' => 'The Bends',
+            'isAlbum' => true,
+            'year' => 1995,
+        ])->songs()->saveMany([
             new Song(['track' => 1, 'title' => 'Planet Telex']),
             new Song(['track' => 2, 'title' => 'The Bends']),
             new Song(['track' => 3, 'title' => 'High and Dry']),
@@ -45,8 +53,11 @@ class SongsTableSeeder extends Seeder
             new Song(['track' => 12, 'title' => 'Street Spirit (Fade Out)']),
         ]);
 
-        $album = Album::whereTitle('OK Computer')->first();
-        $album->songs()->saveMany([
+        Release::create([
+            'title' => 'OK Computer',
+            'isAlbum' => true,
+            'year' => 1997,
+        ])->songs()->saveMany([
             new Song(['track' => 1, 'title' => 'Airbag']),
             new Song(['track' => 2, 'title' => 'Paranoid Android']),
             new Song(['track' => 3, 'title' => 'Subterranean Homesick Alien']),
@@ -61,8 +72,11 @@ class SongsTableSeeder extends Seeder
             new Song(['track' => 12, 'title' => 'The Tourist']),
         ]);
 
-        $album = Album::whereTitle('Kid A')->first();
-        $album->songs()->saveMany([
+        Release::create([
+            'title' => 'Kid A',
+            'isAlbum' => true,
+            'year' => 2000,
+        ])->songs()->saveMany([
             new Song(['track' => 1, 'title' => 'Everything in Its Right Place']),
             new Song(['track' => 2, 'title' => 'Kid A']),
             new Song(['track' => 3, 'title' => 'The National Anthem']),
@@ -75,8 +89,11 @@ class SongsTableSeeder extends Seeder
             new Song(['track' => 10, 'title' => 'Motion Picture Soundtrack']),
         ]);
 
-        $album = Album::whereTitle('Amnesiac')->first();
-        $album->songs()->saveMany([
+        Release::create([
+            'title' => 'Amnesiac',
+            'isAlbum' => true,
+            'year' => 2001,
+        ])->songs()->saveMany([
             new Song(['track' => 1, 'title' => 'Packt Like Sardines in a Crushd Tin Box']),
             new Song(['track' => 2, 'title' => 'Pyramid Song']),
             new Song(['track' => 3, 'title' => 'Pulk/Pull Revolving Doors']),
@@ -90,8 +107,11 @@ class SongsTableSeeder extends Seeder
             new Song(['track' => 11, 'title' => 'Life in a Glasshouse']),
         ]);
 
-        $album = Album::whereTitle('Hail to the Thief')->first();
-        $album->songs()->saveMany([
+        Release::create([
+            'title' => 'Hail to the Thief',
+            'isAlbum' => true,
+            'year' => 2003,
+        ])->songs()->saveMany([
             new Song(['track' => 1, 'title' => '2 + 2 = 5']),
             new Song(['track' => 2, 'title' => 'Sit down. Stand up']),
             new Song(['track' => 3, 'title' => 'Sail to the Moon']),
@@ -108,8 +128,11 @@ class SongsTableSeeder extends Seeder
             new Song(['track' => 14, 'title' => 'A Wolf at the Door']),
         ]);
 
-        $album = Album::whereTitle('In Rainbows')->first();
-        $album->songs()->saveMany([
+        Release::create([
+            'title' => 'In Rainbows',
+            'isAlbum' => true,
+            'year' => 2007,
+        ])->songs()->saveMany([
             new Song(['track' => 1, 'title' => '15 Step']),
             new Song(['track' => 2, 'title' => 'Bodysnatchers']),
             new Song(['track' => 3, 'title' => 'Nude']),
@@ -122,8 +145,11 @@ class SongsTableSeeder extends Seeder
             new Song(['track' => 10, 'title' => 'Videotape']),
         ]);
 
-        $album = Album::whereTitle('The King of Limb')->first();
-        $album->songs()->saveMany([
+        Release::create([
+            'title' => 'The King of Limbs',
+            'isAlbum' => true,
+            'year' => 2011,
+        ])->songs()->saveMany([
             new Song(['track' => 1, 'title' => 'Bloom']),
             new Song(['track' => 2, 'title' => 'Morning Mr Magpie']),
             new Song(['track' => 3, 'title' => 'Little by Little']),
@@ -134,8 +160,11 @@ class SongsTableSeeder extends Seeder
             new Song(['track' => 8, 'title' => 'Separator']),
         ]);
 
-        $album = Album::whereTitle('A Moon Shaped Pool')->first();
-        $album->songs()->saveMany([
+        Release::create([
+            'title' => 'A Moon Shaped Pool',
+            'isAlbum' => true,
+            'year' => 2016,
+        ])->songs()->saveMany([
             new Song(['track' => 1, 'title' => 'Burn the Witch']),
             new Song(['track' => 2, 'title' => 'Daydreaming']),
             new Song(['track' => 3, 'title' => 'Decks Dark']),
@@ -147,6 +176,64 @@ class SongsTableSeeder extends Seeder
             new Song(['track' => 9, 'title' => 'Present Tense']),
             new Song(['track' => 10, 'title' => 'Tinker Tailor Soldier Sailor Rich Man Poor Man Beggar Man Thief']),
             new Song(['track' => 11, 'title' => 'True Love Waits']),
+        ]);
+
+
+        // Non-albums...
+
+        Release::create([
+            'title' => 'In Rainbows Disk 2',
+            'isAlbum' => false,
+            'year' => 2007,
+        ])->songs()->saveMany([
+            new Song(['track' => 1, 'title' => 'MK 1']),
+            new Song(['track' => 2, 'title' => 'Down Is the New Up']),
+            new Song(['track' => 3, 'title' => 'Go Slowly']),
+            new Song(['track' => 4, 'title' => 'MK 2']),
+            new Song(['track' => 5, 'title' => 'Last Flowers']),
+            new Song(['track' => 6, 'title' => 'Up on the Ladder']),
+            new Song(['track' => 7, 'title' => 'Bangers + Mash']),
+            new Song(['track' => 8, 'title' => '4 Minute Warning']),
+        ]);
+
+        Release::create([
+            'title' => 'The Daily Mail / Staircase',
+            'isAlbum' => false,
+            'year' => 2011,
+        ])->songs()->saveMany([
+            new Song(['track' => 1, 'title' => 'The Daily Mail']),
+            new Song(['track' => 2, 'title' => 'Staircase']),
+        ]);
+
+        Release::create([
+            'title' => 'B-sides',
+            'isAlbum' => false,
+        ])->songs()->saveMany([
+            new Song(['title' => 'Fog']),
+            new Song(['title' => 'Talk Show Host']),
+            new Song(['title' => 'The Amazing Sounds of Orgy']),
+        ]);
+
+        Release::create([
+            'title' => 'Unreleased',
+            'isAlbum' => false,
+        ])->songs()->saveMany([
+            new Song(['title' => 'Spooks']),
+            new Song(['title' => 'Skirting on the Surface']),
+        ]);
+
+        Release::create([
+            'title' => 'Thom Yorke Solo',
+            'isAlbum' => false,
+        ])->songs()->saveMany([
+            new Song(['title' => 'Cymbal Rush']),
+        ]);
+
+        Release::create([
+            'title' => 'Miscellaneous',
+            'isAlbum' => false,
+        ])->songs()->saveMany([
+            new Song(['title' => 'Encore']),
         ]);
     }
 }

@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Album extends Model
+class Release extends Model
 {
     /**
      * The attributes that aren't mass assignable.
@@ -21,7 +21,16 @@ class Album extends Model
     public $timestamps = false;
 
     /**
-     * Get the songs for the album.
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'isAlbum' => 'boolean',
+    ];
+
+    /**
+     * Get the songs for the release.
      */
     public function songs()
     {
