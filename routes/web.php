@@ -22,3 +22,7 @@ Route::get('/albums', function () {
 Route::get('/albums/{id}/songs', function ($albumId) {
     return App\Album::find($albumId)->songs;
 });
+
+Route::get('/concerts', function () {
+    return App\Concert::all();
+});
