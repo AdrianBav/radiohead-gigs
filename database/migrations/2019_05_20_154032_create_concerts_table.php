@@ -31,6 +31,8 @@ class CreateConcertsTable extends Migration
 
             $table->unsignedBigInteger('song_id');
             $table->foreign('song_id')->references('id')->on('songs');
+
+            $table->integer('order');
         });
     }
 

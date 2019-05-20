@@ -19,4 +19,26 @@ class Concert extends Model
      * @var bool
      */
     public $timestamps = false;
+
+    /**
+     * Get the songs for the concert.
+     */
+    public function songs()
+    {
+        return $this->belongsToMany(Song::class);
+    }
+
+    /**
+     * Add songs to concert.
+     *
+     * @param  array  $setlist
+     */
+    public function addSongs($setlist)
+    {
+        collect($setlist)->each(function($songTitle, $n) {
+            $song = Song::whereTitle($songTitle)->firstOrFail();
+
+            $this->songs()->attach($song->id, ['order' => $n]);
+        });
+    }
 }
