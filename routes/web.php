@@ -18,3 +18,7 @@ Route::get('/', function () {
 Route::get('/albums', function () {
     return App\Album::all();
 });
+
+Route::get('/albums/{id}/songs', function ($albumId) {
+    return App\Album::find($albumId)->songs;
+});
