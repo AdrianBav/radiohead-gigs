@@ -30,3 +30,7 @@ Route::get('/concerts', function () {
 Route::get('/concerts/{id}/songs', function ($concertId) {
     return App\Concert::find($concertId)->songs;
 });
+
+Route::get('/statistics', function () {
+    return view('statistics');
+});
