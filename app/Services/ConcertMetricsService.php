@@ -50,4 +50,24 @@ class ConcertMetricsService
             })
             ->sortByDesc('percentage');
     }
+
+    /**
+     * Percentage of tracks played on each album formatted for display in a pie chart.
+     *
+     * @return  Collection
+     */
+    public function albumPercentagesForChart()
+    {
+        $albumPercentages = $this->albumPercentages();
+
+        return [
+            'datasets' => [
+                [
+                    'backgroundColor' => Release::albumChartColors(),
+                    'data' => $albumPercentages->pluck('percentage'),
+                ],
+            ],
+            'labels' => $albumPercentages->pluck('title'),
+        ];
+    }
 }

@@ -36,4 +36,20 @@ class Release extends Model
     {
         return $this->hasMany(Song::class);
     }
+
+    //
+    public static function albumChartColors()
+    {
+        return [
+            '#0074d9',
+            '#ff4136',
+            '#2ecc40',
+            '#ff851b',
+            '#7fdbff',
+            '#b10dc9',
+            '#ffdc00',
+            '#001f3f',
+            '#39cccc'
+        ];
+    }
 }
