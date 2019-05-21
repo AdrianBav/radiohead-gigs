@@ -22,18 +22,6 @@ class CreateConcertsTable extends Migration
 
             $table->date('date');
         });
-
-        Schema::create('concert_song', function (Blueprint $table) {
-            $table->bigIncrements('id');
-
-            $table->unsignedBigInteger('concert_id');
-            $table->foreign('concert_id')->references('id')->on('concerts');
-
-            $table->unsignedBigInteger('song_id');
-            $table->foreign('song_id')->references('id')->on('songs');
-
-            $table->integer('order');
-        });
     }
 
     /**
@@ -44,6 +32,5 @@ class CreateConcertsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('concerts');
-        Schema::dropIfExists('concert_song');
     }
 }

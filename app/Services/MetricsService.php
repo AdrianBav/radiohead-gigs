@@ -3,6 +3,8 @@
 namespace App\Services;
 
 use App\Concert;
+use App\Perform;
+use App\Release;
 
 class MetricsService
 {
@@ -57,5 +59,34 @@ class MetricsService
             round($concertSongs->avg()),
             $concertSongs->max()
         );
+    }
+
+    /**
+     * [albumPercentages description]
+     *
+     * @return  [type]
+     */
+    public function albumPercentages()
+    {
+        $allSongsPerformed = Perform::with('song:id,title')
+            ->get()
+            ->map(function($performed) {
+                return $performed->song->title;
+            })
+            ->unique();
+
+        return Release::where('isAlbum', true)
+            ->get()
+            ->map(function($album) use ($allSongsPerformed) {
+                $albumSongs = $album->songs->pluck('title');
+                $songsPlayed = $albumSongs->intersect($allSongsPerformed);
+
+                $percentagePlayed = round(($songsPlayed->count() / $albumSongs->count()) * 100);
+
+                return [
+                    'title' => $album->title,
+                    'percentage' => $percentagePlayed
+                ];
+            });
     }
 }

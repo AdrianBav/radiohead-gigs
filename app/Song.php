@@ -19,4 +19,16 @@ class Song extends Model
      * @var bool
      */
     public $timestamps = false;
+
+    /**
+     * Get the concerts for the song.
+     */
+    public function concerts()
+    {
+        return $this->belongsToMany(Concert::class, 'performed')
+            ->using(Perform::class)
+            ->withPivot([
+                'order'
+            ]);
+    }
 }

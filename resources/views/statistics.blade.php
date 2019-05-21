@@ -4,7 +4,7 @@
 
 <h3>Concerts</h3>
 <ul>
-    <li>{{ $metrics->concertCount() }} concerts attended</li>
+    <li>Concerts attended: {{ $metrics->concertCount() }}</li>
     <li>
         Countried visited:
         <ul>
@@ -14,13 +14,20 @@
         </ul>
     </li>
     <li>Most in the same year: {{ $metrics->mostConcertsInYear() }}</li>
-    <li>Number of songs {{ $metrics->averageSongCount() }}</li>
+    <li>Number of songs: {{ $metrics->averageSongCount() }}</li>
 </ul>
 
 <h3>Albums</h3>
 <ul>
-    <li>Percentage played for each album</li>
-    <li>Album played (at least 1 track) count</li>
+    <li>
+        Percentage of tracks played:
+        <ul>
+            @foreach ($metrics->albumPercentages() as $album)
+            <li>{{ $album['title'] }}, {{ $album['percentage'] }}%</li>
+            @endforeach
+        </ul>
+    </li>
+    <li>Album play frequency (at least 1 track) count</li>
 </ul>
 
 <h3>Songs</h3>
