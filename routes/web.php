@@ -11,9 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'StatisticsController@index');
+Route::get('concerts/{concert}', 'StatisticsController@concert');
+
+
+// Quick API...
 
 Route::get('/releases', function () {
     return App\Release::all();
@@ -29,8 +31,4 @@ Route::get('/concerts', function () {
 
 Route::get('/concerts/{id}/songs', function ($concertId) {
     return App\Concert::find($concertId)->songs;
-});
-
-Route::get('/statistics', function () {
-    return view('statistics');
 });

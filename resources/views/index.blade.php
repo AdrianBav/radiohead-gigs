@@ -2,6 +2,12 @@
 
 <h1>Statistics</h1>
 
+<ul>
+    @foreach ($concerts as $concert)
+    <li><a href="concerts/{{ $concert->id }}">{{ $concert->venue }}</a></li>
+    @endforeach
+</ul>
+
 <h3>Concerts</h3>
 <ul>
     <li>Concerts attended: {{ $metrics->concertCount() }}</li>

@@ -52,7 +52,7 @@ class MetricsService
      */
     public function averageSongCount()
     {
-        $concertSongs = Concert::withCount('songs')->pluck('songs_count');
+        $concertSongs = Concert::withCount('setlist')->pluck('setlist_count');
 
         return sprintf('Min: %s, Avg: %s, Max: %s',
             $concertSongs->min(),

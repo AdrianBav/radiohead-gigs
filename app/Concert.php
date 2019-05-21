@@ -21,9 +21,9 @@ class Concert extends Model
     public $timestamps = false;
 
     /**
-     * Get the songs for the concert.
+     * Get the setlist for the concert.
      */
-    public function songs()
+    public function setlist()
     {
         return $this->belongsToMany(Song::class, 'performed')
             ->using(Perform::class)
@@ -42,7 +42,7 @@ class Concert extends Model
         collect($setlist)->each(function($songTitle, $n) {
             $song = Song::whereTitle($songTitle)->firstOrFail();
 
-            $this->songs()->attach($song->id, ['order' => $n]);
+            $this->setlist()->attach($song->id, ['order' => $n]);
         });
     }
 }
