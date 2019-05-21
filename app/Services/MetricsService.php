@@ -9,9 +9,9 @@ use App\Release;
 class MetricsService
 {
     /**
-     * [concertCount description]
+     * Number of concerts attented.
      *
-     * @return  [type]
+     * @return  integer
      */
     public function concertCount()
     {
@@ -19,9 +19,9 @@ class MetricsService
     }
 
     /**
-     * [concertCountriesCount description]
+     * List of countries visited.
      *
-     * @return  [type]
+     * @return  array
      */
     public function concertCountries()
     {
@@ -29,15 +29,15 @@ class MetricsService
     }
 
     /**
-     * [mostGigsInYear description]
+     * Most concerts attended in the same year.
      *
-     * @return  [type]
+     * @return  string
      */
     public function mostConcertsInYear()
     {
         $most = Concert::selectRaw('COUNT(*) AS total')
-            //->selectRaw('YEAR("date") AS year')       // mysql
-            ->selectRaw('STRFTIME("%Y", date) AS year') // sqlite
+            //->selectRaw('YEAR("date") AS year')           // mysql
+            ->selectRaw('STRFTIME("%Y", date) AS year')     // sqlite
             ->groupBy('year')
             ->orderBy('total', 'desc')
             ->first();
@@ -46,9 +46,9 @@ class MetricsService
     }
 
     /**
-     * [averageSongCount description]
+     * List of min, max and average song counts.
      *
-     * @return  [type]
+     * @return  string
      */
     public function averageSongCount()
     {
@@ -62,22 +62,22 @@ class MetricsService
     }
 
     /**
-     * [albumPercentages description]
+     * Percentage of tracks played on each album.
      *
-     * @return  [type]
+     * @return  Collection
      */
     public function albumPercentages()
     {
         $allSongsPerformed = Perform::with('song:id,title')
             ->get()
-            ->map(function($performed) {
+            ->map(function ($performed) {
                 return $performed->song->title;
             })
             ->unique();
 
         return Release::where('isAlbum', true)
             ->get()
-            ->map(function($album) use ($allSongsPerformed) {
+            ->map(function ($album) use ($allSongsPerformed) {
                 $albumSongs = $album->songs->pluck('title');
                 $songsPlayed = $albumSongs->intersect($allSongsPerformed);
 
@@ -88,5 +88,53 @@ class MetricsService
                     'percentage' => $percentagePlayed
                 ];
             });
+    }
+
+    /**
+     * Total song count.
+     *
+     * @return  integer
+     */
+    public function songCount()
+    {
+        return Perform::count();
+    }
+
+    /**
+     * Number of unique songs.
+     *
+     * @return  integer
+     */
+    public function songUniqueCount()
+    {
+        return Perform::with('song:id,title')
+            ->get()
+            ->map(function ($performed) {
+                return $performed->song->title;
+            })
+            ->unique()
+            ->count();
+    }
+
+    /**
+     * Top ten songs on frequency played.
+     *
+     * @return  Collection
+     */
+    public function topTenSongs()
+    {
+        return Perform::with('song:id,title')
+            ->get()
+            ->map(function ($performed) {
+                return $performed->song->title;
+            })
+            ->reject(function ($value) {
+                return $value == 'Encore';
+            })
+            ->countBy()
+            ->sortByDesc(function ($songCount) {
+                return $songCount;
+            })
+            ->take(10);
     }
 }

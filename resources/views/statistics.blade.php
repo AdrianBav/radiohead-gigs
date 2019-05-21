@@ -27,13 +27,18 @@
             @endforeach
         </ul>
     </li>
-    <li>Album play frequency (at least 1 track) count</li>
 </ul>
 
 <h3>Songs</h3>
 <ul>
-    <li>Number of Songs</li>
-    <li>Number of unique songs</li>
-    <li>Top 10 songs</li>
-    <li>Songs played at every gig?</li>
+    <li>Total number of songs: {{ $metrics->songCount() }}</li>
+    <li>Number of unique songs: {{ $metrics->songUniqueCount() }}</li>
+    <li>
+        Top 10 most played songs:
+        <ul>
+            @foreach ($metrics->topTenSongs() as $song => $frequency)
+            <li>{{ $song }} ({{ $frequency }})</li>
+            @endforeach
+        </ul>
+    </li>
 </ul>
