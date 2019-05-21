@@ -87,7 +87,8 @@ class MetricsService
                     'title' => $album->title,
                     'percentage' => $percentagePlayed
                 ];
-            });
+            })
+            ->sortByDesc('percentage');
     }
 
     /**

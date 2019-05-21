@@ -47,6 +47,7 @@ class ConcertMetricsService
                     'title' => $album->title,
                     'percentage' => $percentagePlayed
                 ];
-            });
+            })
+            ->sortByDesc('percentage');
     }
 }
