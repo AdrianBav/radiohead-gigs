@@ -10,7 +10,7 @@
     <h3>Setlist</h3>
     <ul>
         @foreach ($concert->setlist as $song)
-        <li>{{ $song->title }}</li>
+        <li>{{ $song->title }} @include('partials.debut')</li>
         @endforeach
     </ul>
 

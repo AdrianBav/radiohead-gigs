@@ -45,4 +45,29 @@ class Concert extends Model
             $this->setlist()->attach($song->id, ['order' => $n]);
         });
     }
+
+    /**
+     * Determine if a song is being played for the first time.
+     *
+     * @param   Song  $song
+     * @return  boolean
+     */
+    public function debut(Song $song)
+    {
+        $previousConcertIds = $this->where('date', '<', $this->date)->pluck('id');
+
+        if ($previousConcertIds->isEmpty()) {
+            return false;
+        }
+
+        $previousSongsPerformed = Perform::with('song:id,title')
+            ->whereIn('concert_id', $previousConcertIds)
+            ->get()
+            ->map(function ($performed) {
+                return $performed->song->title;
+            })
+            ->unique();
+
+        return (! $previousSongsPerformed->contains($song->title));
+    }
 }
