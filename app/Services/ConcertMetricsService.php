@@ -58,7 +58,10 @@ class ConcertMetricsService
      */
     public function albumPercentagesForChart()
     {
-        $albumPercentages = $this->albumPercentages();
+        $albumPercentages = $this->albumPercentages()
+            ->reject(function($album) {
+                return $album['percentage'] == 0;
+            });
 
         return [
             'datasets' => [
