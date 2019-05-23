@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Concert;
 use App\Release;
+use Illuminate\Support\Facades\Cache;
 
 class ConcertMetricsService
 {
@@ -31,24 +32,38 @@ class ConcertMetricsService
      */
     public function albumPercentages()
     {
-        $allSongsPerformed = $this->concert->setlist->map(function($song) {
+        $allSongsPerformed = $this->concert->setlist->map(function ($song) {
             return $song->title;
         });
 
-        return Release::where('isAlbum', true)
-            ->get()
-            ->map(function ($album) use ($allSongsPerformed) {
-                $albumSongs = $album->songs->pluck('title');
-                $songsPlayed = $albumSongs->intersect($allSongsPerformed);
+        return Cache::rememberForever('albumPercentages', function () {
+            return Release::where('isAlbum', true)
+                ->get()
+                ->map(function ($album) use ($allSongsPerformed) {
+                    return $this->calculatePercentage($album, $allSongsPerformed);
+                })
+                ->sortByDesc('percentage');
+        });
+    }
 
-                $percentagePlayed = round(($songsPlayed->count() / $albumSongs->count()) * 100);
+    /**
+     * Calculate the percentage of album songs played.
+     *
+     * @param   App\Release  $album
+     * @param   Collection   $allSongsPerformed
+     * @return  array
+     */
+    private function calculatePercentage($album, $allSongsPerformed)
+    {
+        $albumSongs = $album->songs->pluck('title');
+        $songsPlayed = $albumSongs->intersect($allSongsPerformed);
 
-                return [
-                    'title' => $album->title,
-                    'percentage' => $percentagePlayed
-                ];
-            })
-            ->sortByDesc('percentage');
+        $percentagePlayed = round(($songsPlayed->count() / $albumSongs->count()) * 100);
+
+        return [
+            'title' => $album->title,
+            'percentage' => $percentagePlayed
+        ];
     }
 
     /**
@@ -59,7 +74,7 @@ class ConcertMetricsService
     public function albumPercentagesForChart()
     {
         $albumPercentages = $this->albumPercentages()
-            ->reject(function($album) {
+            ->reject(function ($album) {
                 return $album['percentage'] == 0;
             });
 

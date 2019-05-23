@@ -7,18 +7,18 @@ use Illuminate\Database\Eloquent\Model;
 class Release extends Model
 {
     /**
-     * The attributes that aren't mass assignable.
-     *
-     * @var array
-     */
-    protected $guarded = ['id'];
-
-    /**
      * Indicates if the model should be timestamped.
      *
      * @var bool
      */
     public $timestamps = false;
+
+    /**
+     * The attributes that aren't mass assignable.
+     *
+     * @var array
+     */
+    protected $guarded = ['id'];
 
     /**
      * The attributes that should be cast to native types.
@@ -37,7 +37,11 @@ class Release extends Model
         return $this->hasMany(Song::class);
     }
 
-    //
+    /**
+     * Chart colors.
+     *
+     * @return  array
+     */
     public static function albumChartColors()
     {
         return [
@@ -49,7 +53,7 @@ class Release extends Model
             '#b10dc9',
             '#ffdc00',
             '#001f3f',
-            '#39cccc'
+            '#39cccc',
         ];
     }
 }

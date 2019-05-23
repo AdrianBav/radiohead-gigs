@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Concert;
 use App\Perform;
 use App\Release;
+use Illuminate\Support\Facades\Cache;
 
 class MetricsService
 {
@@ -15,7 +16,9 @@ class MetricsService
      */
     public function concertCount()
     {
-        return Concert::count();
+        return Cache::rememberForever('concertCount', function () {
+            return Concert::count();
+        });
     }
 
     /**
@@ -25,7 +28,11 @@ class MetricsService
      */
     public function concertCountries()
     {
-        return Concert::select('country')->distinct()->pluck('country');
+        return Cache::rememberForever('concertCountries', function () {
+            return Concert::select('country')
+                ->distinct()
+                ->pluck('country');
+        });
     }
 
     /**
@@ -35,12 +42,14 @@ class MetricsService
      */
     public function mostConcertsInYear()
     {
-        $most = Concert::selectRaw('COUNT(*) AS total')
-            //->selectRaw('YEAR("date") AS year')           // mysql
-            ->selectRaw('STRFTIME("%Y", date) AS year')     // sqlite
-            ->groupBy('year')
-            ->orderBy('total', 'desc')
-            ->first();
+        $most = Cache::rememberForever('mostConcertsInYear', function () {
+            return Concert::selectRaw('COUNT(*) AS total')
+                //->selectRaw('YEAR("date") AS year')           // mysql
+                ->selectRaw('STRFTIME("%Y", date) AS year')     // sqlite
+                ->groupBy('year')
+                ->orderBy('total', 'desc')
+                ->first();
+        });
 
         return sprintf('%s (%s)', $most['total'], $most['year']);
     }
@@ -52,7 +61,9 @@ class MetricsService
      */
     public function averageSongCount()
     {
-        $concertSongs = Concert::withCount('setlist')->pluck('setlist_count');
+        $concertSongs = Cache::rememberForever('averageSongCount', function () {
+            return Concert::withCount('setlist')->pluck('setlist_count');
+        });
 
         return sprintf('Min: %s, Avg: %s, Max: %s',
             $concertSongs->min(),
@@ -68,27 +79,36 @@ class MetricsService
      */
     public function albumPercentages()
     {
-        $allSongsPerformed = Perform::with('song:id,title')
-            ->get()
-            ->map(function ($performed) {
-                return $performed->song->title;
-            })
-            ->unique();
+        $allSongsPerformed = $this->allSongsPerformed()->unique();
 
-        return Release::where('isAlbum', true)
-            ->get()
-            ->map(function ($album) use ($allSongsPerformed) {
-                $albumSongs = $album->songs->pluck('title');
-                $songsPlayed = $albumSongs->intersect($allSongsPerformed);
+        return Cache::rememberForever('albumPercentages', function () use ($allSongsPerformed) {
+            return Release::where('isAlbum', true)
+                ->get()
+                ->map(function ($album) use ($allSongsPerformed) {
+                    return $this->calculatePercentage($album, $allSongsPerformed);
+                })
+                ->sortByDesc('percentage');
+        });
+    }
 
-                $percentagePlayed = round(($songsPlayed->count() / $albumSongs->count()) * 100);
+    /**
+     * Calculate the percentage of album songs played.
+     *
+     * @param   App\Release  $album
+     * @param   Collection   $allSongsPerformed
+     * @return  array
+     */
+    private function calculatePercentage($album, $allSongsPerformed)
+    {
+        $albumSongs = $album->songs->pluck('title');
+        $songsPlayed = $albumSongs->intersect($allSongsPerformed);
 
-                return [
-                    'title' => $album->title,
-                    'percentage' => $percentagePlayed
-                ];
-            })
-            ->sortByDesc('percentage');
+        $percentagePlayed = round(($songsPlayed->count() / $albumSongs->count()) * 100);
+
+        return [
+            'title' => $album->title,
+            'percentage' => $percentagePlayed
+        ];
     }
 
     /**
@@ -99,7 +119,7 @@ class MetricsService
     public function albumPercentagesForChart()
     {
         $albumPercentages = $this->albumPercentages()
-            ->reject(function($album) {
+            ->reject(function ($album) {
                 return $album['percentage'] == 0;
             });
 
@@ -121,7 +141,9 @@ class MetricsService
      */
     public function songCount()
     {
-        return Perform::count();
+        return Cache::rememberForever('songCount', function () {
+            return Perform::count();
+        });
     }
 
     /**
@@ -131,13 +153,9 @@ class MetricsService
      */
     public function songUniqueCount()
     {
-        return Perform::with('song:id,title')
-            ->get()
-            ->map(function ($performed) {
-                return $performed->song->title;
-            })
-            ->unique()
-            ->count();
+        return Cache::rememberForever('songUniqueCount', function () {
+            return $this->allSongsPerformed()->unique()->count();
+        });
     }
 
     /**
@@ -147,18 +165,32 @@ class MetricsService
      */
     public function topTenSongs()
     {
-        return Perform::with('song:id,title')
-            ->get()
-            ->map(function ($performed) {
-                return $performed->song->title;
-            })
-            ->reject(function ($value) {
-                return $value == 'Encore';
-            })
-            ->countBy()
-            ->sortByDesc(function ($songCount) {
-                return $songCount;
-            })
-            ->take(10);
+        return Cache::rememberForever('topTenSongs', function () {
+            return $this->allSongsPerformed()
+                ->countBy()
+                ->sortByDesc(function ($songCount) {
+                    return $songCount;
+                })
+                ->take(10);
+        });
+    }
+
+    /**
+     * Get a collection of all songs performed.
+     *
+     * @return  Collection
+     */
+    private function allSongsPerformed()
+    {
+        return Cache::rememberForever('allSongsPerformed', function () {
+            return Perform::with('song:id,title')
+                ->get()
+                ->map(function ($performed) {
+                    return $performed->song->title;
+                })
+                ->reject(function ($title) {
+                    return $title == 'Encore';
+                });
+        });
     }
 }
