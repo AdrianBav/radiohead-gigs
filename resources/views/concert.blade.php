@@ -22,10 +22,7 @@
     </ul>
 
     <div style="width: 600px;">
-        <album-share-chart
-            :chart-data="{{ json_encode($concertMetrics->albumPercentagesForChart()) }}"
-        >
-        </album-share-chart>
+        <doughnut-chart :chart-data="{{ json_encode($concertMetrics->albumPercentagesForChart()) }}"></doughnut-chart>
     </div>
 
 @endsection

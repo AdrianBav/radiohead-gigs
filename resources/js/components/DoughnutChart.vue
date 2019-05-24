@@ -17,10 +17,10 @@
             let ctx = document.getElementById( "chart" );
 
             let chart = new Chart(ctx, {
-                type: "pie",
+                type: "doughnut",
                 data: this.chartData,
                 options: {
-                    cutoutPercentage: 50,
+                    responsive: false,
                 }
             });
         },
