@@ -14,15 +14,11 @@
         @endforeach
     </ul>
 
-    <h3>Songs on Albums</h3>
-    <ul>
-        @foreach ($concertMetrics->albumPercentages() as $album)
-        <li>{{ $album['title'] }}, {{ $album['percentage'] }}%</li>
-        @endforeach
-    </ul>
-
-    <div style="width: 600px;">
-        <doughnut-chart :chart-data="{{ json_encode($concertMetrics->albumPercentagesForChart()) }}"></doughnut-chart>
-    </div>
+    <h3>Distribution of albums</h3>
+    <chart
+        type="doughnut"
+        :chart-data="{{ json_encode($concertMetrics->albumDistributionChart()) }}"
+    >
+    </chart>
 
 @endsection

@@ -29,9 +29,10 @@ class MetricsService
     public function concertCountries()
     {
         return Cache::rememberForever('concertCountries', function () {
-            return Concert::select('country')
-                ->distinct()
-                ->pluck('country');
+            return Concert::selectRaw('COUNT(*) AS total')->selectRaw('country')
+                ->groupBy('country')
+                ->orderBy('total', 'desc')
+                ->get();
         });
     }
 
@@ -44,8 +45,7 @@ class MetricsService
     {
         $most = Cache::rememberForever('mostConcertsInYear', function () {
             return Concert::selectRaw('COUNT(*) AS total')
-                //->selectRaw('YEAR("date") AS year')           // mysql
-                ->selectRaw('STRFTIME("%Y", date) AS year')     // sqlite
+                ->selectRaw('YEAR(date) AS year')
                 ->groupBy('year')
                 ->orderBy('total', 'desc')
                 ->first();
@@ -73,11 +73,34 @@ class MetricsService
     }
 
     /**
+     * Get the album coverage data in bar chart format.
+     *
+     * @return  array
+     */
+    public function albumCoverageChart()
+    {
+        $albumPercentages = Cache::rememberForever('albumCoverageChart', function () {
+            return $this->albumPercentages();
+        });
+
+        return [
+            'labels' => $albumPercentages->pluck('title'),
+            'datasets' => [
+                [
+                    'label' => '% of album played',
+                    'data' => $albumPercentages->pluck('percentage'),
+                    'backgroundColor' => Release::albumChartColors(),
+                ]
+            ]
+        ];
+    }
+
+    /**
      * Percentage of tracks played on each album.
      *
      * @return  Collection
      */
-    public function albumPercentages()
+    private function albumPercentages()
     {
         $allSongsPerformed = $this->allSongsPerformed()->unique();
 
@@ -116,21 +139,65 @@ class MetricsService
      *
      * @return  Collection
      */
-    public function albumPercentagesForChart()
+    public function albumDistributionChart()
     {
-        $albumPercentages = $this->albumPercentages()
-            ->reject(function ($album) {
-                return $album['percentage'] == 0;
-            });
+        $albumPercentages = Cache::rememberForever('albumDistributionChart', function () {
+            return $this->albumDistribution()
+                ->reject(function ($album) {
+                    return $album['number'] == 0;
+                });
+        });
 
         return [
             'datasets' => [
                 [
                     'backgroundColor' => Release::albumChartColors(),
-                    'data' => $albumPercentages->pluck('percentage'),
+                    'data' => $albumPercentages->pluck('number'),
                 ],
             ],
             'labels' => $albumPercentages->pluck('title'),
+        ];
+    }
+
+    /**
+     * Calculate the distribution of songs across all albums.
+     *
+     * @return  Collection
+     */
+    private function albumDistribution()
+    {
+        $allSongsPerformed = $this->allSongsPerformed()->unique();
+
+        $albums = Release::where('isAlbum', true)
+            ->get()
+            ->map(function ($album) use ($allSongsPerformed) {
+                return $this->numberOfTracksPlayed($album, $allSongsPerformed);
+            })
+            ->sortByDesc('number');
+
+        $nonAlbum = [
+            'title' => 'Non-album',
+            'number' => ($this->songUniqueCount() - $albums->sum('number')),
+        ];
+
+        return $albums->push($nonAlbum);
+    }
+
+    /**
+     * Calcualte the number of tracks played from the given album.
+     *
+     * @param   Object  $album
+     * @param   Collection  $allSongsPerformed
+     * @return  array
+     */
+    private function numberOfTracksPlayed($album, $allSongsPerformed)
+    {
+        $albumSongs = $album->songs->pluck('title');
+        $songsPlayed = $albumSongs->intersect($allSongsPerformed);
+
+        return [
+            'title' => $album->title,
+            'number' => $songsPlayed->count(),
         ];
     }
 

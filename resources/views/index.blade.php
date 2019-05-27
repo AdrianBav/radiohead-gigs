@@ -18,8 +18,8 @@
         <li>
             Countried visited:
             <ul>
-                @foreach ($metrics->concertCountries() as $country)
-                <li>{{ $country }}</li>
+                @foreach ($metrics->concertCountries() as $concert)
+                <li>{{ $concert->country }} ({{ $concert->total }})</li>
                 @endforeach
             </ul>
         </li>
@@ -28,20 +28,24 @@
     </ul>
 
     <h3>Albums</h3>
-    <ul>
-        <li>
-            Percentage of tracks played:
-            <ul>
-                @foreach ($metrics->albumPercentages() as $album)
-                <li>{{ $album['title'] }}, {{ $album['percentage'] }}%</li>
-                @endforeach
-            </ul>
-        </li>
-    </ul>
 
-    <div style="width: 600px;">
-        <doughnut-chart :chart-data="{{ json_encode($metrics->albumPercentagesForChart()) }}"></doughnut-chart>
-    </div>
+    <ul>
+        <li>Percentage of each album played:</li>
+    </ul>
+    <chart
+        type="horizontalBar"
+        :chart-data="{{ json_encode($metrics->albumCoverageChart()) }}"
+    >
+    </chart>
+
+    <ul>
+        <li>Distribution of albums:</li>
+    </ul>
+    <chart
+        type="doughnut"
+        :chart-data="{{ json_encode($metrics->albumDistributionChart()) }}"
+    >
+    </chart>
 
     <h3>Songs</h3>
     <ul>
