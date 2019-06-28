@@ -7,6 +7,14 @@ use App\Services\ConcertMetricsService;
 
 class StatisticsController extends Controller
 {
+    /** temp  */
+    public function stats()
+    {
+        $concerts = Concert::all();
+
+        return view('_stats', compact('concerts'));
+    }
+
     /**
      * Show the statistics for all concerts.
      *
@@ -28,6 +36,6 @@ class StatisticsController extends Controller
     {
         $concertMetrics = new ConcertMetricsService($concert);
 
-        return view('concert', compact('concert', 'concertMetrics'));
+        return view('_concert', compact('concert', 'concertMetrics'));
     }
 }

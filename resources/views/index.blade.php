@@ -4,61 +4,33 @@
 
 @section('content')
 
-    <h1>Statistics</h1>
+    {{-- Row 1 --}}
+    @include('layouts.tiles.boxes')
 
-    <ul>
-        @foreach ($concerts as $concert)
-        <li><a href="concerts/{{ $concert->id }}">{{ $concert->venue }}</a></li>
-        @endforeach
-    </ul>
+    {{-- Row 2 --}}
+    <div class="row">
+        <div class="col-md-4 col-sm-4 col-xs-12">
+            @include('layouts.tiles.album-coverage')
+        </div>
 
-    <h3>Concerts</h3>
-    <ul>
-        <li>Concerts attended: {{ $metrics->concertCount() }}</li>
-        <li>
-            Countried visited:
-            <ul>
-                @foreach ($metrics->concertCountries() as $concert)
-                <li>{{ $concert->country }} ({{ $concert->total }})</li>
-                @endforeach
-            </ul>
-        </li>
-        <li>Most in the same year: {{ $metrics->mostConcertsInYear() }}</li>
-        <li>Number of songs: {{ $metrics->averageSongCount() }}</li>
-    </ul>
+        <div class="col-md-4 col-sm-4 col-xs-12">
+            @include('layouts.tiles.album-distribution')
+        </div>
 
-    <h3>Albums</h3>
+        <div class="col-md-4 col-sm-4 col-xs-12">
+            @include('layouts.tiles.top-songs')
+        </div>
+    </div>
 
-    <ul>
-        <li>Percentage of each album played:</li>
-    </ul>
-    <chart
-        type="horizontalBar"
-        :chart-data="{{ json_encode($metrics->albumCoverageChart()) }}"
-    >
-    </chart>
+    {{-- Row 3 --}}
+    <div class="row">
+        <div class="col-md-4 col-sm-4 col-xs-12">
+            @include('layouts.tiles.concerts')
+        </div>
 
-    <ul>
-        <li>Distribution of albums:</li>
-    </ul>
-    <chart
-        type="doughnut"
-        :chart-data="{{ json_encode($metrics->albumDistributionChart()) }}"
-    >
-    </chart>
-
-    <h3>Songs</h3>
-    <ul>
-        <li>Total number of songs: {{ $metrics->songCount() }}</li>
-        <li>Number of unique songs: {{ $metrics->songUniqueCount() }}</li>
-        <li>
-            Top 10 most played songs:
-            <ul>
-                @foreach ($metrics->topTenSongs() as $song => $frequency)
-                <li>{{ $song }} ({{ $frequency }})</li>
-                @endforeach
-            </ul>
-        </li>
-    </ul>
+        <div class="col-md-8 col-sm-8 col-xs-12">
+            @include('layouts.tiles.concert-locations')
+        </div>
+    </div>
 
 @endsection

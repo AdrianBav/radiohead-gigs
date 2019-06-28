@@ -11,5 +11,8 @@
 |
 */
 
+// temp
+Route::get('/stats', 'StatisticsController@stats');
+
 Route::get('/', 'StatisticsController@index');
 Route::get('concerts/{concert}', 'StatisticsController@concert');
