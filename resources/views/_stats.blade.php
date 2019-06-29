@@ -23,6 +23,7 @@
                 @endforeach
             </ul>
         </li>
+        <li>Countried visited: {{ $metrics->concertCountryCount() }}</li>
         <li>Most in the same year: {{ $metrics->mostConcertsInYear() }}</li>
         <li>Number of songs: {{ $metrics->averageSongCount() }}</li>
     </ul>
@@ -54,8 +55,8 @@
         <li>
             Top 10 most played songs:
             <ul>
-                @foreach ($metrics->topTenSongs() as $song => $frequency)
-                <li>{{ $song }} ({{ $frequency }})</li>
+                @foreach ($metrics->topTenSongs() as $song)
+                <li>{{ $song['title'] }} ({{ $song['count'] }})</li>
                 @endforeach
             </ul>
         </li>

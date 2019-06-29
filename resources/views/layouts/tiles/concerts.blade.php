@@ -1,6 +1,6 @@
-<div class="x_panel tile fixed_height_320">
+<div class="x_panel tile fixed_height_390">
     <div class="x_title">
-        <h2>Concerts</h2>
+        <h2>Concerts <small>Timeline</small></h2>
         <ul class="nav navbar-right panel_toolbox">
             <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
             </li>
@@ -19,6 +19,20 @@
         <div class="clearfix"></div>
     </div>
     <div class="x_content">
-        Add content to the page ...
+        <div class="dashboard-widget-content">
+            <ul class="list-unstyled timeline widget">
+                @foreach ($concerts as $concert)
+                <li>
+                    <div class="block">
+                        <div class="block_content">
+                            <h2 class="title">
+                                <a href="concerts/{{ $concert->id }}">{{ $concert->venue }}</a>
+                            </h2>
+                        </div>
+                    </div>
+                </li>
+                @endforeach
+            </ul>
+        </div>
     </div>
 </div>

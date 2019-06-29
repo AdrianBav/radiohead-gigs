@@ -37,6 +37,18 @@ class MetricsService
     }
 
     /**
+     * Count the number of distinct countires.
+     *
+     * @return  integer
+     */
+    public function concertCountryCount()
+    {
+        return Cache::rememberForever('concertCountryCount', function () {
+            return Concert::distinct('country')->count('country');
+        });
+    }
+
+    /**
      * Most concerts attended in the same year.
      *
      * @return  string
@@ -142,10 +154,7 @@ class MetricsService
     public function albumDistributionChart()
     {
         $albumPercentages = Cache::rememberForever('albumDistributionChart', function () {
-            return $this->albumDistribution()
-                ->reject(function ($album) {
-                    return $album['number'] == 0;
-                });
+            return $this->albumDistribution();
         });
 
         return [
@@ -164,7 +173,7 @@ class MetricsService
      *
      * @return  Collection
      */
-    private function albumDistribution()
+    public function albumDistribution()
     {
         $allSongsPerformed = $this->allSongsPerformed()->unique();
 
@@ -180,7 +189,11 @@ class MetricsService
             'number' => ($this->songUniqueCount() - $albums->sum('number')),
         ];
 
-        return $albums->push($nonAlbum);
+        $albums->push($nonAlbum);
+
+        return $albums->reject(function ($album) {
+            return $album['number'] == 0;
+        });
     }
 
     /**
@@ -232,11 +245,20 @@ class MetricsService
      */
     public function topTenSongs()
     {
-        return Cache::rememberForever('topTenSongs', function () {
+        $concertCount = $this->concertCount();
+
+        return Cache::rememberForever('topTenSongs', function () use ($concertCount) {
             return $this->allSongsPerformed()
                 ->countBy()
-                ->sortByDesc(function ($songCount) {
-                    return $songCount;
+                ->map(function($count, $title) use ($concertCount) {
+                    return [
+                        'title' => $title,
+                        'count' => $count,
+                        'percentage' => round(($count / $concertCount) * 100),
+                    ];
+                })
+                ->sortByDesc(function ($song) {
+                    return $song['count'];
                 })
                 ->take(10);
         });

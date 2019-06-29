@@ -1,6 +1,6 @@
-<div class="x_panel">
+<div class="x_panel tile fixed_height_390">
     <div class="x_title">
-        <h2>Concert locations <small>geo-presentation</small></h2>
+        <h2>Concert locations <small>rh-worldwide</small></h2>
         <ul class="nav navbar-right panel_toolbox">
             <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
             </li>
@@ -21,26 +21,16 @@
     <div class="x_content">
         <div class="dashboard-widget-content">
             <div class="col-md-4 hidden-small">
-                <h2 class="line_30">9 Concerts in 4 countries</h2>
+                <h2 class="line_30">{{ $metrics->concertCount() }} concerts in {{ $metrics->concertCountryCount() }} countries</h2>
 
                 <table class="countries_list">
                     <tbody>
+                        @foreach ($metrics->concertCountries() as $concert)
                         <tr>
-                            <td>Britain</td>
-                            <td class="fs15 fw700 text-right">4</td>
+                            <td>{{ $concert->country }}</td>
+                            <td class="fs15 fw700 text-right">{{ $concert->total }}</td>
                         </tr>
-                        <tr>
-                            <td>United States</td>
-                            <td class="fs15 fw700 text-right">3</td>
-                        </tr>
-                        <tr>
-                            <td>Netherlands</td>
-                            <td class="fs15 fw700 text-right">1</td>
-                        </tr>
-                        <tr>
-                            <td>France</td>
-                            <td class="fs15 fw700 text-right">1</td>
-                        </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

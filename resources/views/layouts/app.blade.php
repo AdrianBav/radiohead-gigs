@@ -21,7 +21,7 @@
         <link href="rh/vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
 
         <!-- Custom Theme Style -->
-        <link href="rh/custom.min.css" rel="stylesheet">
+        <link href="rh/custom.css" rel="stylesheet">
     </head>
 
     <body class="nav-md">
@@ -67,6 +67,9 @@
 
         <!-- Chart.js -->
         <script src="rh/vendors/Chart.js/dist/Chart.min.js"></script>
+        <!-- morris.js -->
+        <script src="rh/vendors/raphael/raphael.min.js"></script>
+        <script src="rh/vendors/morris.js/morris.min.js"></script>
         <!-- bootstrap-progressbar -->
         <script src="rh/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
         <!-- JQVMap -->
@@ -75,7 +78,7 @@
         <script src="rh/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
 
         <!-- Custom Theme Scripts -->
-        <script src="rh/custom.min.js"></script>
+        <script src="rh/custom.js"></script>
     </body>
 
 </html>

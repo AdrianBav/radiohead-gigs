@@ -1,4 +1,4 @@
-<div class="x_panel tile fixed_height_320 overflow_hidden">
+<div class="x_panel tile fixed_height_390">
     <div class="x_title">
         <h2>Album Distribution</h2>
         <ul class="nav navbar-right panel_toolbox">
@@ -22,14 +22,14 @@
         <table class="" style="width:100%">
             <tr>
                 <th style="width:37%;">
-                    <p>Top 5</p>
+                    <p>Pie</p>
                 </th>
                 <th>
                     <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
-                        <p class="">Device</p>
+                        <p class="">Album</p>
                     </div>
                     <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
-                        <p class="">Progress</p>
+                        <p class="">Distribution</p>
                     </div>
                 </th>
             </tr>
@@ -39,36 +39,14 @@
                 </td>
                 <td>
                     <table class="tile_info">
+                        @foreach ($metrics->albumDistribution() as $album)
                         <tr>
                             <td>
-                                <p><i class="fa fa-square blue"></i>Hail to the Thief </p>
+                                <p><i class="fa fa-square blue"></i>{{ $album['title'] }}</p>
                             </td>
-                            <td>12%</td>
+                            <td>{{ $album['number'] }}%</td>
                         </tr>
-                        <tr>
-                            <td>
-                                <p><i class="fa fa-square green"></i>In Rainbows </p>
-                            </td>
-                            <td>10%</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <p><i class="fa fa-square purple"></i>OK Computer </p>
-                            </td>
-                            <td>8%</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <p><i class="fa fa-square aero"></i>Kid A </p>
-                            </td>
-                            <td>7%</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <p><i class="fa fa-square red"></i>TKOL </p>
-                            </td>
-                            <td>7%</td>
-                        </tr>
+                        @endforeach
                     </table>
                 </td>
             </tr>

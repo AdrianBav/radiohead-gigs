@@ -1,7 +1,7 @@
 <footer>
 
     <div class="pull-right">
-        Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+        MyRHDB - Part of <a href="https://bavanco.co.uk">Bavanco</a>
     </div>
 
     <div class="clearfix"></div>
