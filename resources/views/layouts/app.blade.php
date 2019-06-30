@@ -44,7 +44,7 @@
 
                 {{-- Main --}}
                 <div class="right_col" role="main">
-                    <div class="">
+                    <div id="app">
 
                         @yield('content')
 
@@ -56,6 +56,7 @@
             </div>
         </div>
 
+        <script src="{{ asset('/js/app.js') }}"></script>
         <!-- jQuery -->
         <script src="rh/vendors/jquery/dist/jquery.min.js"></script>
         <!-- Bootstrap -->

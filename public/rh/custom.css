@@ -1638,9 +1638,9 @@ ul.quick-list li i {
     float: left;
     text-align: right
 }
-.widget_summary .w_right span {
+/*.widget_summary .w_right span {
     font-size: 20px
-}
+}*/
 .w_20 {
     width: 20%
 }
@@ -4253,3 +4253,8 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
     background-color: #ffff !important;
 }
 /** /bootstrap-datetimepicker **/
+
+
+#album-distribution-chart {
+    margin: 15px 10px 10px 0;
+}

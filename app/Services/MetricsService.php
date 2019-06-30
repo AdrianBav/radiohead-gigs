@@ -101,7 +101,7 @@ class MetricsService
                 [
                     'label' => '% of album played',
                     'data' => $albumPercentages->pluck('percentage'),
-                    'backgroundColor' => Release::albumChartColors(),
+                    'backgroundColor' => '#26b99a',
                 ]
             ]
         ];
@@ -122,7 +122,7 @@ class MetricsService
                 ->map(function ($album) use ($allSongsPerformed) {
                     return $this->calculatePercentage($album, $allSongsPerformed);
                 })
-                ->sortByDesc('percentage');
+                ->sortByDesc('year');
         });
     }
 

@@ -19,7 +19,7 @@
         <div class="clearfix"></div>
     </div>
     <div class="x_content">
-        <table class="" style="width:100%">
+        <table style="width:100%">
             <tr>
                 <th style="width:37%;">
                     <p>Pie</p>
@@ -35,7 +35,13 @@
             </tr>
             <tr>
                 <td>
-                    <canvas class="canvasDoughnut" height="140" width="140" style="margin: 15px 10px 10px 0"></canvas>
+                    <chart
+                        type="doughnut"
+                        height="140" width="140"
+                        :chart-data="{{ json_encode($metrics->albumDistributionChart()) }}"
+                        id="album-distribution-chart"
+                    >
+                    </chart>
                 </td>
                 <td>
                     <table class="tile_info">

@@ -5,7 +5,9 @@
 @section('content')
 
     {{-- Row 1 --}}
-    @include('layouts.tiles.boxes')
+    <div class="row">
+        @include('layouts.tiles.boxes')
+    </div>
 
     {{-- Row 2 --}}
     <div class="row">

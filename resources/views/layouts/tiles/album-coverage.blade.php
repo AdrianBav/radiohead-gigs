@@ -20,7 +20,12 @@
     </div>
     <div class="x_content">
 
-        <div id="graph_bar" style="width:100%; height:280px;"></div>
+        <chart
+            type="horizontalBar"
+            height="280" width="480"
+            :chart-data="{{ json_encode($metrics->albumCoverageChart()) }}"
+        >
+        </chart>
 
     </div>
 </div>
