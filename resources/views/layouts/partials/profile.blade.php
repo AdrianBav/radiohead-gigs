@@ -1,7 +1,7 @@
 <div class="profile clearfix">
 
     <div class="profile_pic">
-        <img src="rh/img.jpg" alt="..." class="img-circle profile_img">
+        <img src="/rh/img.jpg" alt="..." class="img-circle profile_img">
     </div>
 
     <div class="profile_info">

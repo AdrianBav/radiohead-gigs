@@ -6,7 +6,7 @@
             <li><a><i class="fa fa-edit"></i> Concerts <span class="fa fa-chevron-down"></span></a>
                 <ul class="nav child_menu">
                     @foreach ($concerts as $concert)
-                    <li><a href="concerts/{{ $concert->id }}">{{ $concert->venue }}</a></li>
+                    <li><a href="/concerts/{{ $concert->id }}">{{ $concert->venue }}</a></li>
                     @endforeach
                 </ul>
             </li>

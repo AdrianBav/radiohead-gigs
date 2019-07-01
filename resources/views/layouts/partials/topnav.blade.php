@@ -9,7 +9,7 @@
             <ul class="nav navbar-nav navbar-right">
                 <li class="">
                     <a class="user-profile">
-                        <img src="rh/img.jpg" alt="">Adrian Bavister
+                        <img src="/rh/img.jpg" alt="">Adrian Bavister
                     </a>
                 </li>
             </ul>
