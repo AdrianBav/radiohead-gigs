@@ -1,4 +1,5 @@
 <div class="x_panel tile fixed_height_390">
+
     <div class="x_title">
         <h2>Top 10 Songs</h2>
         <ul class="nav navbar-right panel_toolbox">
@@ -18,6 +19,7 @@
         </ul>
         <div class="clearfix"></div>
     </div>
+
     <div class="x_content">
         @foreach ($metrics->topTenSongs() as $song)
         <div class="widget_summary">
@@ -38,4 +40,5 @@
         </div>
         @endforeach
     </div>
+
 </div>

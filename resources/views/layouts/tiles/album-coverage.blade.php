@@ -1,4 +1,5 @@
 <div class="x_panel tile fixed_height_390">
+
     <div class="x_title">
         <h2>Album Coverage</h2>
         <ul class="nav navbar-right panel_toolbox">
@@ -18,14 +19,14 @@
         </ul>
         <div class="clearfix"></div>
     </div>
-    <div class="x_content">
 
+    <div class="x_content">
         <chart
             type="horizontalBar"
             height="280" width="480"
             :chart-data="{{ json_encode($metrics->albumCoverageChart()) }}"
         >
         </chart>
-
     </div>
+
 </div>

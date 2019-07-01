@@ -1,4 +1,5 @@
 <div class="x_panel tile fixed_height_390">
+
     <div class="x_title">
         <h2>Concerts <small>Timeline</small></h2>
         <ul class="nav navbar-right panel_toolbox">
@@ -18,6 +19,7 @@
         </ul>
         <div class="clearfix"></div>
     </div>
+
     <div class="x_content">
         <div class="dashboard-widget-content">
             <ul class="list-unstyled timeline widget">
@@ -35,4 +37,5 @@
             </ul>
         </div>
     </div>
+
 </div>

@@ -1,4 +1,5 @@
 <div class="x_panel">
+
     <div class="x_title">
         <h2>Daily active users <small>Sessions</small></h2>
         <ul class="nav navbar-right panel_toolbox">
@@ -18,6 +19,7 @@
         </ul>
         <div class="clearfix"></div>
     </div>
+
     <div class="x_content">
         <div class="bs-example" data-example-id="simple-jumbotron">
             <div class="jumbotron">
@@ -26,6 +28,6 @@
                 <p>{{ $concert->date }}</p>
             </div>
         </div>
-
     </div>
+
 </div>

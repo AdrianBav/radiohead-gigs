@@ -4,12 +4,10 @@
 
 @section('content')
 
-    {{-- Row 1 --}}
     <div class="row">
         @include('layouts.tiles.boxes')
     </div>
 
-    {{-- Row 2 --}}
     <div class="row">
         <div class="col-md-4 col-sm-4 col-xs-12">
             @include('layouts.tiles.concerts')
@@ -20,7 +18,6 @@
         </div>
     </div>
 
-    {{-- Row 3 --}}
     <div class="row">
         <div class="col-md-4 col-sm-4 col-xs-12">
             @include('layouts.tiles.album-coverage')

@@ -1,4 +1,5 @@
 <div class="x_panel tile fixed_height_390">
+
     <div class="x_title">
         <h2>Album Distribution</h2>
         <ul class="nav navbar-right panel_toolbox">
@@ -18,6 +19,7 @@
         </ul>
         <div class="clearfix"></div>
     </div>
+
     <div class="x_content">
         <table style="width:100%">
             <tr>
@@ -58,4 +60,5 @@
             </tr>
         </table>
     </div>
+
 </div>

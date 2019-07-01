@@ -1,4 +1,5 @@
 <div class="x_panel">
+
     <div class="x_title">
         <h2>Distribution of albums <small>Sessions</small></h2>
         <ul class="nav navbar-right panel_toolbox">
@@ -18,6 +19,7 @@
         </ul>
         <div class="clearfix"></div>
     </div>
+
     <div class="x_content">
         <chart
             type="doughnut"
@@ -26,4 +28,5 @@
         >
         </chart>
     </div>
+
 </div>

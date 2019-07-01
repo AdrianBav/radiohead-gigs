@@ -10,18 +10,8 @@
 
         <title>MyRHDB</title>
 
-        <!-- Bootstrap -->
-        <link href="/rh/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-        <!-- Font Awesome -->
-        <link href="/rh/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-        <!-- NProgress -->
-        <link href="/rh/vendors/nprogress/nprogress.css" rel="stylesheet">
-
-        <!-- JQVMap -->
-        <link href="/rh/vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
-
-        <!-- Custom Theme Style -->
-        <link href="/rh/custom.css" rel="stylesheet">
+        <!-- Styles -->
+        <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
     </head>
 
     <body class="nav-md">
@@ -56,30 +46,9 @@
             </div>
         </div>
 
+        <!-- Scripts -->
+        <script src="{{ asset('/js/vendor.js') }}"></script>
         <script src="{{ asset('/js/app.js') }}"></script>
-        <!-- jQuery -->
-        <script src="/rh/vendors/jquery/dist/jquery.min.js"></script>
-        <!-- Bootstrap -->
-        <script src="/rh/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-        <!-- FastClick -->
-        <script src="/rh/vendors/fastclick/lib/fastclick.js"></script>
-        <!-- NProgress -->
-        <script src="/rh/vendors/nprogress/nprogress.js"></script>
-
-        <!-- Chart.js -->
-        <script src="/rh/vendors/Chart.js/dist/Chart.min.js"></script>
-        <!-- morris.js -->
-        <script src="/rh/vendors/raphael/raphael.min.js"></script>
-        <script src="/rh/vendors/morris.js/morris.min.js"></script>
-        <!-- bootstrap-progressbar -->
-        <script src="/rh/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
-        <!-- JQVMap -->
-        <script src="/rh/vendors/jqvmap/dist/jquery.vmap.js"></script>
-        <script src="/rh/vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
-        <script src="/rh/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
-
-        <!-- Custom Theme Scripts -->
-        <script src="/rh/custom.js"></script>
     </body>
 
 </html>

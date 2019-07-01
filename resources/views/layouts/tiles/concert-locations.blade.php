@@ -1,4 +1,5 @@
 <div class="x_panel tile fixed_height_390">
+
     <div class="x_title">
         <h2>Concert locations <small>rh-worldwide</small></h2>
         <ul class="nav navbar-right panel_toolbox">
@@ -18,6 +19,7 @@
         </ul>
         <div class="clearfix"></div>
     </div>
+
     <div class="x_content">
         <div class="dashboard-widget-content">
             <div class="col-md-4 hidden-small">
@@ -37,4 +39,5 @@
             <div id="world-map-gdp" class="col-md-8 col-sm-12 col-xs-12" style="height:230px;"></div>
         </div>
     </div>
+
 </div>

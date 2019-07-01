@@ -1,4 +1,5 @@
 <div class="x_panel">
+
     <div class="x_title">
         <h2>Setlist <small>Try hovering over the rows</small></h2>
         <ul class="nav navbar-right panel_toolbox">
@@ -18,6 +19,7 @@
         </ul>
         <div class="clearfix"></div>
     </div>
+
     <div class="x_content">
         <table class="table table-hover">
             <thead>
@@ -35,6 +37,6 @@
                 @endforeach
             </tbody>
         </table>
-
     </div>
+
 </div>
