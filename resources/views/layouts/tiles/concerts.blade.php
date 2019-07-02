@@ -28,7 +28,7 @@
                     <div class="block">
                         <div class="block_content">
                             <h2 class="title">
-                                <a href="concerts/{{ $concert->id }}">{{ $concert->venue }}</a>
+                                <a href="{{ route('concert', $concert) }}">{{ $concert->venue }}</a>
                             </h2>
                         </div>
                     </div>

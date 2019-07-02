@@ -11,8 +11,6 @@
 |
 */
 
-// temp
-Route::get('/stats', 'StatisticsController@stats');
+Route::get('/', 'StatisticsController@index')->name('home');
 
-Route::get('/', 'StatisticsController@index');
-Route::get('concerts/{concert}', 'StatisticsController@concert');
+Route::get('concerts/{concert}', 'StatisticsController@concert')->name('concert');

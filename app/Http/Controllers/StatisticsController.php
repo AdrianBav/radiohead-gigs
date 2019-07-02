@@ -14,9 +14,7 @@ class StatisticsController extends Controller
      */
     public function index()
     {
-        $concerts = Concert::all();
-
-        return view('index', compact('concerts'));
+        return view('index');
     }
 
     /**
@@ -26,21 +24,8 @@ class StatisticsController extends Controller
      */
     public function concert(Concert $concert)
     {
-        $concerts = Concert::all();
         $concertMetrics = new ConcertMetricsService($concert);
 
-        return view('concert', compact('concerts', 'concert', 'concertMetrics'));
-    }
-
-
-
-
-    //
-    /** temp  */
-    public function index2()
-    {
-        $concerts = Concert::all();
-
-        return view('_index', compact('concerts'));
+        return view('concert', compact('concert', 'concertMetrics'));
     }
 }
