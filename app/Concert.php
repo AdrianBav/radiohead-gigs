@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Concert extends Model
@@ -26,6 +27,17 @@ class Concert extends Model
      * @var array
      */
     protected $with = ['setlist'];
+
+    /**
+     * Format the date.
+     *
+     * @param  string  $value
+     * @return string
+     */
+    public function getDateAttribute($value)
+    {
+        return Carbon::parse($value)->format('jS F Y');
+    }
 
     /**
      * Get the setlist for the concert.

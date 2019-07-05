@@ -147,6 +147,17 @@ class MetricsService
     }
 
     /**
+     * Accessor for album chart colors.
+     *
+     * @param   integer  $albumNumber
+     * @return  string
+     */
+    public function albumChartColors($albumNumber)
+    {
+        return Release::albumChartColors()[$albumNumber];
+    }
+
+    /**
      * Percentage of tracks played on each album formatted for display in a pie chart.
      *
      * @return  Collection
@@ -160,12 +171,25 @@ class MetricsService
         return [
             'datasets' => [
                 [
-                    'backgroundColor' => Release::albumChartColors(),
+                    'backgroundColor' => $this->getAlbumDistributionChartColors($albumPercentages->keys()),
                     'data' => $albumPercentages->pluck('number'),
                 ],
             ],
             'labels' => $albumPercentages->pluck('title'),
         ];
+    }
+
+    /**
+     * Get album distribution chart colors.
+     *
+     * @param   Collection  $keys
+     * @return  array
+     */
+    public function getAlbumDistributionChartColors($keys)
+    {
+        return $keys->map(function ($key) {
+            return Release::albumChartColors()[$key];
+        })->all();
     }
 
     /**

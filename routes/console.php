@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Foundation\Inspiring;
+use Illuminate\Filesystem\Filesystem;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +13,12 @@ use Illuminate\Foundation\Inspiring;
 |
 */
 
-Artisan::command('inspire', function () {
-    $this->comment(Inspiring::quote());
-})->describe('Display an inspiring quote');
+Artisan::command('public:clear', function (Filesystem $filesystem) {
+    $filesystem->delete(public_path('mix-manifest.json'));
+    $filesystem->deleteDirectory(public_path('css'));
+    $filesystem->deleteDirectory(public_path('fonts'));
+    $filesystem->deleteDirectory(public_path('images'));
+    $filesystem->deleteDirectory(public_path('js'));
+
+    $this->info('Public assets cleared!');
+})->describe('Clear all public assets.');

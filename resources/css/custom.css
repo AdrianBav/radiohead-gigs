@@ -882,7 +882,6 @@ a:focus {
 }
 .panel_toolbox {
     float: right;
-    min-width: 70px
 }
 .panel_toolbox>li {
     float: left;
@@ -1222,6 +1221,9 @@ table.tile_info td i {
 }
 table.tile_info td:first-child {
     width: 83%
+}
+table.tile_info td:last-child {
+    text-align: right;
 }
 td span {
     line-height: inherit
@@ -1637,11 +1639,23 @@ ul.quick-list li i {
 /*.widget_summary .w_right span {
     font-size: 20px
 }*/
+.w_15 {
+    width: 15%
+}
 .w_20 {
     width: 20%
 }
 .w_25 {
     width: 25%
+}
+.w_30 {
+    width: 30%
+}
+.w_40 {
+    width: 40%
+}
+.w_45 {
+    width: 45%
 }
 .w_55 {
     width: 55%
@@ -2579,7 +2593,10 @@ ul.bar_tabs.right li {
 a:focus {
     outline: none
 }
-ul.timeline li {
+.timeline {
+    margin-top: -5px;
+}
+ul.timeline li:not(:last-child) {
     position: relative;
     border-bottom: 1px solid #e8e8e8;
     clear: both
@@ -2588,7 +2605,7 @@ ul.timeline li {
     margin: 0;
     border-left: 3px solid #e8e8e8;
     overflow: visible;
-    padding: 10px 15px;
+    padding: 8px 15px;
     margin-left: 105px
 }
 .timeline.widget {
@@ -4253,4 +4270,9 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
 
 #album-distribution-chart {
     margin: 15px 10px 10px 0;
+}
+
+#world-map-gdp .jqvmap-zoomin,
+#world-map-gdp .jqvmap-zoomout {
+    background: #1abb9c;
 }

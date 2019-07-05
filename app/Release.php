@@ -45,15 +45,16 @@ class Release extends Model
     public static function albumChartColors()
     {
         return [
-            '#0074d9',
-            '#ff4136',
-            '#2ecc40',
-            '#ff851b',
-            '#7fdbff',
-            '#b10dc9',
-            '#ffdc00',
-            '#001f3f',
-            '#39cccc',
+            '#000000',
+            '#34495e',
+            '#3498db',
+            '#9b59b6',
+            '#e74c3c',
+            '#455c73',
+            '#1abb9c',
+            '#9cc2cb',
+            '#26b99a',
+            '#bdc3c7',
         ];
     }
 }
