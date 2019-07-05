@@ -1,7 +1,7 @@
 <div class="x_panel">
 
     <div class="x_title">
-        <h2>Setlist <small>Try hovering over the rows</small></h2>
+        <h2>The Setlist <small>{{ $concertMetrics->concertSongCount() }} songs (excluding encores)</small></h2>
         <ul class="nav navbar-right panel_toolbox">
             <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
         </ul>
@@ -9,7 +9,7 @@
     </div>
 
     <div class="x_content">
-        <table class="table table-hover">
+        <table class="table table-hover jambo_table ">
             <thead>
                 <tr>
                     <th>#</th>

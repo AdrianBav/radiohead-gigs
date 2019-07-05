@@ -26,6 +26,17 @@ class ConcertMetricsService
     }
 
     /**
+     * Accessor for album chart colors.
+     *
+     * @param   integer  $albumNumber
+     * @return  string
+     */
+    public function albumChartColors($albumNumber)
+    {
+        return Release::albumChartColors()[$albumNumber];
+    }
+
+    /**
      * Percentage of tracks played on each album formatted for display in a pie chart.
      *
      * @return  Collection
@@ -35,16 +46,13 @@ class ConcertMetricsService
         $cacheKey = sprintf('albumDistributionChart-%s', $this->concert->id);
 
         $albumPercentages = Cache::rememberForever($cacheKey, function () {
-            return $this->albumDistribution()
-                ->reject(function ($album) {
-                    return $album['number'] == 0;
-                });
+            return $this->albumDistribution();
         });
 
         return [
             'datasets' => [
                 [
-                    'backgroundColor' => Release::albumChartColors(),
+                    'backgroundColor' => $this->getAlbumDistributionChartColors($albumPercentages->keys()),
                     'data' => $albumPercentages->pluck('number'),
                 ],
             ],
@@ -53,11 +61,24 @@ class ConcertMetricsService
     }
 
     /**
+     * Get album distribution chart colors.
+     *
+     * @param   Collection  $keys
+     * @return  array
+     */
+    public function getAlbumDistributionChartColors($keys)
+    {
+        return $keys->map(function ($key) {
+            return Release::albumChartColors()[$key];
+        })->all();
+    }
+
+    /**
      * Calculate the distribution of songs across all albums.
      *
      * @return  Collection
      */
-    private function albumDistribution()
+    public function albumDistribution()
     {
         $allSongsPerformed = $this->concert->setlist->map(function ($song) {
             return $song->title;
@@ -75,7 +96,11 @@ class ConcertMetricsService
             'number' => ($this->concertSongCount() - $albums->sum('number')),
         ];
 
-        return $albums->push($nonAlbum);
+        $albums->push($nonAlbum);
+
+        return $albums->reject(function ($album) {
+            return $album['number'] == 0;
+        });
     }
 
     /**
@@ -101,7 +126,7 @@ class ConcertMetricsService
      *
      * @return  integer
      */
-    private function concertSongCount()
+    public function concertSongCount()
     {
         return $this->concert->setlist
             ->reject(function ($song) {
