@@ -9,7 +9,7 @@
             <ul class="nav navbar-nav navbar-right">
                 <li class="">
                     <a class="user-profile">
-                        <img src="{{ asset('images/me.jpg') }}" alt="">Adrian Bavister
+                        <img src="{{ asset('images/me.jpg') }}" alt="Adrian Bavister">Adrian Bavister
                     </a>
                 </li>
             </ul>

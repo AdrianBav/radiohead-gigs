@@ -8,7 +8,9 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>MyRHDB</title>
+        <title>MyRHDB | Bavanco</title>
+        <meta name="description" content="My Radiohead database. A visual representation of all the Radiohead concerts I have been to.">
+        <meta name="author" content="Adrian Bavister">
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('/css/app.css') }}">

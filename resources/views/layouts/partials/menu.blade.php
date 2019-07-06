@@ -10,7 +10,7 @@
                     @endforeach
                 </ul>
             </li>
-            <li><a><i class="fa fa-music"></i> Releases <span class="fa fa-chevron-down"></span></a></li>
+            {{-- <li><a><i class="fa fa-music"></i> Releases <span class="fa fa-chevron-down"></span></a></li> --}}
         </ul>
 
     </div>
