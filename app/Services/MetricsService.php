@@ -172,7 +172,7 @@ class MetricsService
             'datasets' => [
                 [
                     'backgroundColor' => $this->getAlbumDistributionChartColors($albumPercentages->keys()),
-                    'data' => $albumPercentages->pluck('number'),
+                    'data' => $albumPercentages->pluck('percentage'),
                 ],
             ],
             'labels' => $albumPercentages->pluck('title'),
@@ -204,37 +204,37 @@ class MetricsService
         $albums = Release::where('isAlbum', true)
             ->get()
             ->map(function ($album) use ($allSongsPerformed) {
-                return $this->numberOfTracksPlayed($album, $allSongsPerformed);
+                return $this->percentageOfAllTracksPlayed($album, $allSongsPerformed);
             })
-            ->sortByDesc('number');
+            ->sortByDesc('percentage');
 
         $nonAlbum = [
             'title' => 'Non-album',
-            'number' => ($this->songUniqueCount() - $albums->sum('number')),
+            'percentage' => (100 - $albums->sum('percentage')),
         ];
 
         $albums->push($nonAlbum);
 
         return $albums->reject(function ($album) {
-            return $album['number'] == 0;
+            return $album['percentage'] == 0;
         });
     }
 
     /**
-     * Calcualte the number of tracks played from the given album.
+     * Calcualte the percentage of tracks played from the given album.
      *
      * @param   Object  $album
      * @param   Collection  $allSongsPerformed
      * @return  array
      */
-    private function numberOfTracksPlayed($album, $allSongsPerformed)
+    private function percentageOfAllTracksPlayed($album, $allSongsPerformed)
     {
         $albumSongs = $album->songs->pluck('title');
         $songsPlayed = $albumSongs->intersect($allSongsPerformed);
 
         return [
             'title' => $album->title,
-            'number' => $songsPlayed->count(),
+            'percentage' => round(($songsPlayed->count() / $this->songUniqueCount()) * 100),
         ];
     }
 

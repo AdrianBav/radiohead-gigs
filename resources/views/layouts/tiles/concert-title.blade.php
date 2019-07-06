@@ -1,4 +1,4 @@
-<div class="x_panel">
+<div class="x_panel" id="concert-title">
 
     <div class="x_title">
         <h2>{{ $concert->venue }} <small>{{ $concert->date }}</small></h2>
@@ -11,9 +11,11 @@
     <div class="x_content">
         <div class="bs-example" data-example-id="simple-jumbotron">
             <div class="jumbotron">
-                <h1>{{ $concert->venue }}</h1>
-                <h3>in {{ $concert->city }}, {{ $concert->country }}</h3>
-                <p>on {{ $concert->date }}</p>
+                <h1><i class="fa fa-users"></i> {{ $concert->venue }}</h1>
+                <h3>
+                    <span><i class="fa fa-building-o"></i> in {{ $concert->city }}, {{ $concert->country }}</span>
+                    <span><i class="fa fa-calendar"></i> on {{ $concert->date }}</span>
+                </h3>
             </div>
         </div>
     </div>

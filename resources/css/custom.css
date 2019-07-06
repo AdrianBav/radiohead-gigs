@@ -4268,6 +4268,8 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
 /** /bootstrap-datetimepicker **/
 
 
+/* Tweaks to Tiles */
+
 #album-distribution-chart {
     margin: 15px 10px 10px 0;
 }
@@ -4275,4 +4277,18 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
 #world-map-gdp .jqvmap-zoomin,
 #world-map-gdp .jqvmap-zoomout {
     background: #1abb9c;
+}
+
+#setlist table .badge {
+    margin-left: 1em;
+}
+#setlist .legend {
+    margin-top: 3em;
+}
+
+#concert-title .jumbotron h1 {
+    margin-bottom: 0.5em;
+}
+#concert-title .jumbotron h3 span + span {
+    margin-left: 1em;
 }

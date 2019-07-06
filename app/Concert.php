@@ -73,7 +73,8 @@ class Concert extends Model
      */
     public function debut(Song $song)
     {
-        $previousConcertIds = $this->where('date', '<', $this->date)->pluck('id');
+        $dateWithoutAccessor = $this->getAttributes()['date'];
+        $previousConcertIds = $this->where('date', '<', $dateWithoutAccessor)->pluck('id');
 
         if ($previousConcertIds->isEmpty()) {
             return false;

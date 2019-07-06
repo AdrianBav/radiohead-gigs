@@ -1,4 +1,4 @@
-<div class="x_panel">
+<div class="x_panel" id="setlist">
 
     <div class="x_title">
         <h2>The Setlist <small>{{ $concertMetrics->concertSongCount() }} songs (excluding encores)</small></h2>
@@ -9,7 +9,7 @@
     </div>
 
     <div class="x_content">
-        <table class="table table-hover jambo_table ">
+        <table class="table table-hover jambo_table">
             <thead>
                 <tr>
                     <th>#</th>
@@ -25,6 +25,10 @@
                 @endforeach
             </tbody>
         </table>
+
+        <p class="legend">
+            <span class="badge bg-green">1st Play</span> &ndash; The first time I've heard this song played live.
+        </p>
     </div>
 
 </div>

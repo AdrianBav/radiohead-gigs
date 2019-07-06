@@ -53,7 +53,7 @@ class ConcertMetricsService
             'datasets' => [
                 [
                     'backgroundColor' => $this->getAlbumDistributionChartColors($albumPercentages->keys()),
-                    'data' => $albumPercentages->pluck('number'),
+                    'data' => $albumPercentages->pluck('percentage'),
                 ],
             ],
             'labels' => $albumPercentages->pluck('title'),
@@ -87,37 +87,37 @@ class ConcertMetricsService
         $albums = Release::where('isAlbum', true)
             ->get()
             ->map(function ($album) use ($allSongsPerformed) {
-                return $this->numberOfTracksPlayed($album, $allSongsPerformed);
+                return $this->percentageOfAllTracksPlayed($album, $allSongsPerformed);
             })
-            ->sortByDesc('number');
+            ->sortByDesc('percentage');
 
         $nonAlbum = [
             'title' => 'Non-album',
-            'number' => ($this->concertSongCount() - $albums->sum('number')),
+            'percentage' => (100 - $albums->sum('percentage')),
         ];
 
         $albums->push($nonAlbum);
 
         return $albums->reject(function ($album) {
-            return $album['number'] == 0;
+            return $album['percentage'] == 0;
         });
     }
 
     /**
-     * Calcualte the number of tracks played from the given album.
+     * Calcualte the percentage of tracks played from the given album.
      *
      * @param   Object  $album
      * @param   Collection  $allSongsPerformed
      * @return  array
      */
-    private function numberOfTracksPlayed($album, $allSongsPerformed)
+    private function percentageOfAllTracksPlayed($album, $allSongsPerformed)
     {
         $albumSongs = $album->songs->pluck('title');
         $songsPlayed = $albumSongs->intersect($allSongsPerformed);
 
         return [
             'title' => $album->title,
-            'number' => $songsPlayed->count(),
+            'percentage' => round(($songsPlayed->count() / $this->concertSongCount()) * 100),
         ];
     }
 
@@ -128,9 +128,13 @@ class ConcertMetricsService
      */
     public function concertSongCount()
     {
-        return $this->concert->setlist
-            ->reject(function ($song) {
-                return $song->title == 'Encore';
-            })->count();
+        $cacheKey = sprintf('concertSongCount-%s', $this->concert->id);
+
+        return Cache::rememberForever($cacheKey, function () {
+            return $this->concert->setlist
+                ->reject(function ($song) {
+                    return $song->title == 'Encore';
+                })->count();
+        });
     }
 }

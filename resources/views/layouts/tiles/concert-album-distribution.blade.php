@@ -29,7 +29,7 @@
                                     {{ $album['title'] }}
                                 </p>
                             </td>
-                            <td>{{ $album['number'] }}%</td>
+                            <td>{{ $album['percentage'] }}%</td>
                         </tr>
                         @endforeach
                     </table>

@@ -46,14 +46,14 @@ class Release extends Model
     {
         return [
             '#000000',
-            '#34495e',
+            '#8abb6f',
             '#3498db',
             '#9b59b6',
             '#e74c3c',
             '#455c73',
             '#1abb9c',
             '#9cc2cb',
-            '#26b99a',
+            '#f0ad4e',
             '#bdc3c7',
         ];
     }

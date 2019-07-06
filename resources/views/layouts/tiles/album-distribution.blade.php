@@ -1,7 +1,7 @@
 <div class="x_panel tile fixed_height_390">
 
     <div class="x_title">
-        <h2>Album Distribution <small>Across the {{ $metrics->concertCount() }} concerts.</small></h2>
+        <h2>Album Distribution <small>Across all {{ $metrics->concertCount() }} concerts.</small></h2>
         <ul class="nav navbar-right panel_toolbox">
             <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
         </ul>
@@ -43,7 +43,7 @@
                                     {{ $album['title'] }}
                                 </p>
                             </td>
-                            <td>{{ $album['number'] }}%</td>
+                            <td>{{ $album['percentage'] }}%</td>
                         </tr>
                         @endforeach
                     </table>
