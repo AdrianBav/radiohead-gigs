@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Concert;
+use App\Release;
 use App\Services\ConcertMetricsService;
 
 class StatisticsController extends Controller
@@ -27,5 +28,15 @@ class StatisticsController extends Controller
         $concertMetrics = new ConcertMetricsService($concert);
 
         return view('concert', compact('concert', 'concertMetrics'));
+    }
+
+    /**
+     * Show the details for the specified release.
+     *
+     * @return View
+     */
+    public function release(Release $release)
+    {
+        return view('release', compact('release'));
     }
 }

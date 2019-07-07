@@ -10,7 +10,13 @@
                     @endforeach
                 </ul>
             </li>
-            {{-- <li><a><i class="fa fa-music"></i> Releases <span class="fa fa-chevron-down"></span></a></li> --}}
+            <li><a><i class="fa fa-music"></i> Releases <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                    @foreach ($releases as $release)
+                    <li><a href="{{ route('release', $release) }}">{{ $release->title }}</a></li>
+                    @endforeach
+                </ul>
+            </li>
         </ul>
 
     </div>

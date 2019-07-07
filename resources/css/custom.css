@@ -183,6 +183,7 @@ html, body{
 .site_title img {
     max-height: 66px;
     max-width: 180px;
+    margin-right: 10px;
 }
 .nav-sm .main_container .top_nav {
     display: block;

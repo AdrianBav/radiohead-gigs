@@ -16,3 +16,5 @@ use AdrianBav\Traffic\Middlewares\RecordVisits;
 Route::get('/', 'StatisticsController@index')->middleware(RecordVisits::class)->name('home');
 
 Route::get('concerts/{concert}', 'StatisticsController@concert')->name('concert');
+
+Route::get('releases/{release}', 'StatisticsController@release')->name('release');
