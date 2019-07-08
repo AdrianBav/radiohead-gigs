@@ -911,6 +911,16 @@ footer {
     padding: 15px 20px;
     display: block
 }
+@media (max-width: 767px) {
+    footer div.pull-left,
+    footer div.pull-right {
+        float: none !important;
+        text-align: center;
+    }
+    footer div.pull-left {
+        font-size: 115%;
+    }
+}
 .nav-sm footer {
     margin-left: 70px
 }
@@ -4290,6 +4300,20 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
 #concert-title .jumbotron h1 {
     margin-bottom: 0.5em;
 }
-#concert-title .jumbotron h3 span + span {
-    margin-left: 1em;
+@media (min-width: 768px) {
+    #concert-title .jumbotron h3 span + span {
+        margin-left: 1em;
+    }
+}
+@media (max-width: 767px) {
+    #concert-title .jumbotron h1 {
+        font-size: 25px;
+    }
+    #concert-title .jumbotron h3 {
+        font-size: 18px;
+    }
+    #concert-title .jumbotron h3 span {
+        display: inline-block;
+        margin-top: 10px;
+    }
 }
