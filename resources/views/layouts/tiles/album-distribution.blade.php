@@ -1,4 +1,4 @@
-<div class="x_panel tile fixed_height_390">
+<div class="x_panel tile fixed_height_390" id="album-distribution">
 
     <div class="x_title">
         <h2>Album Distribution <small>Across all {{ $metrics->concertCount() }} concerts.</small></h2>

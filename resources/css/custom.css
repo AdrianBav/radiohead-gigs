@@ -4317,3 +4317,9 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
         margin-top: 10px;
     }
 }
+
+@media (max-width: 767px) {
+    #concert-locations.fixed_height_390 {
+        height: 500px
+    }
+}

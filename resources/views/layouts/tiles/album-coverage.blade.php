@@ -1,4 +1,4 @@
-<div class="x_panel tile fixed_height_390">
+<div class="x_panel tile fixed_height_390" id="album-coverage">
 
     <div class="x_title">
         <h2>Album Coverage <small>Percentage of each album played.</small></h2>

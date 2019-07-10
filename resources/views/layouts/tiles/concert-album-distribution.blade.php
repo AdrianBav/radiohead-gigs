@@ -1,4 +1,4 @@
-<div class="x_panel">
+<div class="x_panel" id="concert-album-distribution">
 
     <div class="x_title">
         <h2>Album Distribution <small>at {{ $concert->venue }}</small></h2>

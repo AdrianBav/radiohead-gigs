@@ -1,4 +1,4 @@
-<div class="x_panel tile fixed_height_390">
+<div class="x_panel tile fixed_height_390" id="top-songs">
 
     <div class="x_title">
         <h2>Top 10 Songs <small>Number of plays out of a total of {{ $metrics->concertCount() }}.</small></h2>
