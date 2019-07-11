@@ -4323,3 +4323,18 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
         height: 500px
     }
 }
+
+@media (max-width: 767px) {
+    #top-songs .w_45 {
+        width: 50%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis
+    }
+    #top-songs .w_40 {
+        width: 30%;
+    }
+    #top-songs .w_15 {
+        width: 20%;
+    }
+}
