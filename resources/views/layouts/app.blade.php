@@ -7,6 +7,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#f5ea28">
 
         <title>MyRHDB | Bavanco</title>
         <meta name="description" content="My Radiohead database. A visual representation of all the Radiohead concerts I have been to.">
