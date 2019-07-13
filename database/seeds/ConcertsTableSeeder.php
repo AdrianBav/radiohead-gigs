@@ -16,7 +16,9 @@ class ConcertsTableSeeder extends Seeder
             'venue' => 'Nottingham Arena',
             'city' => 'Nottingham',
             'country' => 'UK',
-            'date' => '2003-11-29'
+            'date' => '2003-11-29',
+            'attendees' => 'Sturart, Bruce and Yolande',
+            'description' => 'This is where it all began. My first Radiohead gig. I was living in Nottingham at the time and I had been a fan of the band for Six years.',
         ])->addSongs([
             '2 + 2 = 5',
             'Sit down. Stand up',
@@ -51,7 +53,9 @@ class ConcertsTableSeeder extends Seeder
             'venue' => 'Heineken Music Hall',
             'city' =>  'Amsterdam',
             'country' => 'Netherlands',
-            'date' => '2006-05-09'
+            'date' => '2006-05-09',
+            'attendees' => 'Hendrick',
+            'description' => 'My favourite Radiohead gig. This was the last leg of my Euro-tour. Lucky and Spooks were highlighs.',
         ])->addSongs([
             'Everything in Its Right Place',
             'The National Anthem',
@@ -83,7 +87,9 @@ class ConcertsTableSeeder extends Seeder
             'venue' => 'Rock en Seine',
             'city' =>  'Paris',
             'country' => 'France',
-            'date' => '2006-08-26'
+            'date' => '2006-08-26',
+            'attendees' => 'Delphine and Adrien',
+            'description' => 'I traveled to France for a music festival. Videotape debut.',
         ])->addSongs([
             'Airbag',
             '2 + 2 = 5',
@@ -113,7 +119,9 @@ class ConcertsTableSeeder extends Seeder
             'venue' => '93 Feet East',
             'city' =>  'London',
             'country' => 'UK',
-            'date' => '2008-01-16'
+            'date' => '2008-01-16',
+            'attendees' => '3 random people',
+            'description' => 'Queued up all day long.',
         ])->addSongs([
             '15 Step',
             'Bodysnatchers',
@@ -137,7 +145,9 @@ class ConcertsTableSeeder extends Seeder
             'venue' => 'Victoria Park',
             'city' =>  'London',
             'country' => 'UK',
-            'date' => '2008-06-24'
+            'date' => '2008-06-24',
+            'attendees' => 'Simon and Gary',
+            'description' => 'Gig 5 minutes walk from my house.',
         ])->addSongs([
             '15 Step',
             'Bodysnatchers',
@@ -172,7 +182,9 @@ class ConcertsTableSeeder extends Seeder
             'venue' => 'Victoria Park',
             'city' =>  'London',
             'country' => 'UK',
-            'date' => '2008-06-25'
+            'date' => '2008-06-25',
+            'attendees' => 'Tom and Michelle were there.',
+            'description' => 'Gig 5 minutes walk from my house.',
         ])->addSongs([
             'Reckoner',
             '15 Step',
@@ -207,7 +219,9 @@ class ConcertsTableSeeder extends Seeder
             'venue' => 'Santa Barbara Bowl',
             'city' =>  'Santa Barbara, CA',
             'country' => 'USA',
-            'date' => '2008-08-28'
+            'date' => '2008-08-28',
+            'attendees' => 'Jillian, Mirriam and Kelly.',
+            'description' => 'California trip. Drive from LA to SF.',
         ])->addSongs([
             'Reckoner',
             'Optimistic',
@@ -242,7 +256,9 @@ class ConcertsTableSeeder extends Seeder
             'venue' => 'American Airlines Center',
             'city' =>  'Dallas, TX',
             'country' => 'USA',
-            'date' => '2012-03-05'
+            'date' => '2012-03-05',
+            'attendees' => 'Jillian',
+            'description' => 'Now living in America and this was my local gig. The Amazing Sounds of Orgy world debeut?',
         ])->addSongs([
             'Bloom',
             'Little by Little',
@@ -276,7 +292,9 @@ class ConcertsTableSeeder extends Seeder
             'venue' => 'ACL (Zilker Park)',
             'city' =>  'Austin, TX',
             'country' => 'USA',
-            'date' => '2016-09-30'
+            'date' => '2016-09-30',
+            'attendees' => 'Jillian, Lissa and Ryan',
+            'description' => 'Traveled down to Austin. Karma Police ending.',
         ])->addSongs([
             'Burn the Witch',
             'Daydreaming',

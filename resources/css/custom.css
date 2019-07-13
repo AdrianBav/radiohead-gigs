@@ -4300,6 +4300,10 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
 #concert-title .jumbotron h1 {
     margin-bottom: 0.5em;
 }
+#concert-title .jumbotron .description {
+    margin-top: 2em;
+    margin-bottom: 0;
+}
 @media (min-width: 768px) {
     #concert-title .jumbotron h3 span + span {
         margin-left: 1em;

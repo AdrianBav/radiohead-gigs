@@ -20,6 +20,9 @@ class CreateConcertsTable extends Migration
             $table->string('city');
             $table->string('country');
 
+            $table->string('attendees')->nullable();
+            $table->text('description');
+
             $table->date('date');
         });
     }

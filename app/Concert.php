@@ -68,15 +68,16 @@ class Concert extends Model
     /**
      * Determine if a song is being played for the first time.
      *
-     * @param   Song  $song
+     * @param   Song     $song
+     * @param   boolean  $ignoreFirstConcert
      * @return  boolean
      */
-    public function debut(Song $song)
+    public function debut(Song $song, $ignoreFirstConcert = false)
     {
         $dateWithoutAccessor = $this->getAttributes()['date'];
         $previousConcertIds = $this->where('date', '<', $dateWithoutAccessor)->pluck('id');
 
-        if ($previousConcertIds->isEmpty()) {
+        if ($previousConcertIds->isEmpty() && $ignoreFirstConcert) {
             return false;
         }
 

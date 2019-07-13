@@ -15,7 +15,9 @@
                 <h3>
                     <span><i class="fa fa-building-o"></i> in {{ $concert->city }}, {{ $concert->country }}</span>
                     <span><i class="fa fa-calendar"></i> on {{ $concert->date }}</span>
+                    <span><i class="fa fa-users"></i> with {{ $concert->attendees }}</span>
                 </h3>
+                <p class="description">{{ $concert->description }}</p>
             </div>
         </div>
     </div>

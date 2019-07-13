@@ -3,7 +3,7 @@
 
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <!-- Meta, title, CSS, favicons, etc. -->
+        {{-- Meta, title, CSS, favicons, etc. --}}
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,7 +13,7 @@
         <meta name="description" content="My Radiohead database. A visual representation of all the Radiohead concerts I have been to.">
         <meta name="author" content="Adrian Bavister">
 
-        <!-- Styles -->
+        {{-- Styles --}}
         <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
     </head>
 
@@ -49,7 +49,7 @@
             </div>
         </div>
 
-        <!-- Scripts -->
+        {{-- Scripts --}}
         <script src="{{ asset('/js/vendor.js') }}"></script>
         <script src="{{ asset('/js/app.js') }}"></script>
     </body>
