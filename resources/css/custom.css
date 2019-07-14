@@ -4290,6 +4290,9 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
     background: #1abb9c;
 }
 
+#setlist table tr.encore {
+    background-color: #eeeeee;
+}
 #setlist table .badge {
     margin-left: 1em;
 }

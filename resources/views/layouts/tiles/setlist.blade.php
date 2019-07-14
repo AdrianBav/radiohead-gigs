@@ -18,7 +18,11 @@
             </thead>
             <tbody>
                 @foreach ($concert->setlist as $song)
+                @if ($song->title == 'Encore')
+                <tr class="encore">
+                @else
                 <tr>
+                @endif
                     <th scope="row">{{ $loop->iteration }}</th>
                     <td>{{ $song->title }} @include('layouts.partials.debut')</td>
                 </tr>

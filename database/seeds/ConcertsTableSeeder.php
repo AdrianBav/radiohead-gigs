@@ -18,7 +18,7 @@ class ConcertsTableSeeder extends Seeder
             'country' => 'UK',
             'date' => '2003-11-29',
             'attendees' => 'Sturart, Bruce and Yolande',
-            'description' => 'This is where it all began. My first Radiohead gig. I was living in Nottingham at the time and I had been a fan of the band for Six years.',
+            'description' => 'Are you such a dreamer... So after many years of listening to Radiohead in my bedroom, I finaly attend my first concert. I was living in Nottingham at the time hence the venue. I remember lots of jumping up and down during the first song before it settled down somewhat. "There There" was spectacular live.',
         ])->addSongs([
             '2 + 2 = 5',
             'Sit down. Stand up',
@@ -54,8 +54,8 @@ class ConcertsTableSeeder extends Seeder
             'city' =>  'Amsterdam',
             'country' => 'Netherlands',
             'date' => '2006-05-09',
-            'attendees' => 'Hendrick',
-            'description' => 'My favourite Radiohead gig. This was the last leg of my Euro-tour. Lucky and Spooks were highlighs.',
+            'attendees' => 'Hendrik',
+            'description' => 'The last leg of my mini Euro-tour was a stop in Amsterdam to see Radiohead. I remember very early on they played "Lucky" and it sounded absoluly amazing. After the encore they played a new song called "Spooks" which I remember as short and full of energy. I loved it. This was my favourite Radiohead convert.',
         ])->addSongs([
             'Everything in Its Right Place',
             'The National Anthem',
@@ -89,7 +89,7 @@ class ConcertsTableSeeder extends Seeder
             'country' => 'France',
             'date' => '2006-08-26',
             'attendees' => 'Delphine and Adrien',
-            'description' => 'I traveled to France for a music festival. Videotape debut.',
+            'description' => 'Summer 2006 and I\'m in Paris for the "Rock en Seine" music festival. I specifically remember hearing "Videotape" for the first time. It was unreleased at the time and I took an audio recording of it on my camera.',
         ])->addSongs([
             'Airbag',
             '2 + 2 = 5',
@@ -121,7 +121,7 @@ class ConcertsTableSeeder extends Seeder
             'country' => 'UK',
             'date' => '2008-01-16',
             'attendees' => '3 random people',
-            'description' => 'Queued up all day long.',
+            'description' => 'Early that morning I spotted a message on Facebook that Radiohead would be performing a secret gig in the east end of London where I lived. I called work, told then I wasn\'t coming in, and joined the queue. Eight hours later the door opened and I got to see Radiohead perform the entire "In Rainbows" album to a small crowd of 200 people.',
         ])->addSongs([
             '15 Step',
             'Bodysnatchers',
@@ -147,7 +147,7 @@ class ConcertsTableSeeder extends Seeder
             'country' => 'UK',
             'date' => '2008-06-24',
             'attendees' => 'Simon and Gary',
-            'description' => 'Gig 5 minutes walk from my house.',
+            'description' => 'A dream come true as Radiohead play back to back concerts in Victoria Park, my local park, just 5 minutes walk from my house. Again "There There" was amazing and I heard "Planet Telex" and "The Tourist" for the first time. A treat after the encore as Thom played "Cymbal Rush".',
         ])->addSongs([
             '15 Step',
             'Bodysnatchers',
@@ -183,8 +183,8 @@ class ConcertsTableSeeder extends Seeder
             'city' =>  'London',
             'country' => 'UK',
             'date' => '2008-06-25',
-            'attendees' => 'Tom and Michelle were there.',
-            'description' => 'Gig 5 minutes walk from my house.',
+            'attendees' => 'Tom and Michelle',
+            'description' => 'Night two at Victoria Park. A similar set to night one but still some songs I havn\'t heard live before including "Myxomatosis" and "Optimistic". By this stage I was able to recognise which song was coming next based on which guitar Thom picked up.',
         ])->addSongs([
             'Reckoner',
             '15 Step',
@@ -220,8 +220,8 @@ class ConcertsTableSeeder extends Seeder
             'city' =>  'Santa Barbara, CA',
             'country' => 'USA',
             'date' => '2008-08-28',
-            'attendees' => 'Jillian, Mirriam and Kelly.',
-            'description' => 'California trip. Drive from LA to SF.',
+            'attendees' => 'Jillian, Miriam and Kelly',
+            'description' => 'One of the highlights of my 2008 California trip was a visit to the Santa Barbara Bowl to see Radiohead. We drove from Los Angeles in the morning and headed up north after the concert to San Francisco. The band plays "Talk Show Host", a b-side I get to hear for the first time.',
         ])->addSongs([
             'Reckoner',
             'Optimistic',
@@ -258,7 +258,7 @@ class ConcertsTableSeeder extends Seeder
             'country' => 'USA',
             'date' => '2012-03-05',
             'attendees' => 'Jillian',
-            'description' => 'Now living in America and this was my local gig. The Amazing Sounds of Orgy world debeut?',
+            'description' => 'By 2012, I was living in America. On Radiohead\'s next US tour, we went to our local concert in Dallas. The band plays "The Amazing Sounds of Orgy" for the very first time live, a b-side from 2001.',
         ])->addSongs([
             'Bloom',
             'Little by Little',
@@ -294,7 +294,7 @@ class ConcertsTableSeeder extends Seeder
             'country' => 'USA',
             'date' => '2016-09-30',
             'attendees' => 'Jillian, Lissa and Ryan',
-            'description' => 'Traveled down to Austin. Karma Police ending.',
+            'description' => 'Summer 2016 as we drive down to Austin for the "Austin City Limits" music festival. The "Moon Shaped Pool" songs sound great and I hear "Exit Music" for the first time. The set ends with "Karma Police" and the crowd joins Thom for a sing-along. For a minute there...',
         ])->addSongs([
             'Burn the Witch',
             'Daydreaming',
