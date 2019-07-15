@@ -4301,7 +4301,11 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
 }
 
 #concert-title .jumbotron h1 {
+    line-height: 1.5;
     margin-bottom: 0.5em;
+}
+#concert-title .jumbotron h3 {
+    line-height: 1.5;
 }
 #concert-title .jumbotron .description {
     margin-top: 2em;

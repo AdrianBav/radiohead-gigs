@@ -18,7 +18,7 @@ class ConcertsTableSeeder extends Seeder
             'country' => 'UK',
             'date' => '2003-11-29',
             'attendees' => 'Sturart, Bruce and Yolande',
-            'description' => 'Are you such a dreamer... So after many years of listening to Radiohead in my bedroom, I finaly attend my first concert. I was living in Nottingham at the time hence the venue. I remember lots of jumping up and down during the first song before it settled down somewhat. "There There" was spectacular live.',
+            'description' => 'Are you such a dreamer... So after many years of listening to Radiohead in my bedroom, I finally attend my first concert. I was living in Nottingham at the time hence the venue. I remember lots of jumping up and down during the first song before it settled down somewhat. "There There" was spectacular live.',
         ])->addSongs([
             '2 + 2 = 5',
             'Sit down. Stand up',
@@ -55,7 +55,7 @@ class ConcertsTableSeeder extends Seeder
             'country' => 'Netherlands',
             'date' => '2006-05-09',
             'attendees' => 'Hendrik',
-            'description' => 'The last leg of my mini Euro-tour was a stop in Amsterdam to see Radiohead. I remember very early on they played "Lucky" and it sounded absoluly amazing. After the encore they played a new song called "Spooks" which I remember as short and full of energy. I loved it. This was my favourite Radiohead convert.',
+            'description' => 'The last leg of my mini Euro-tour was a stop in Amsterdam to see Radiohead. I remember very early on they played "Lucky" and it sounded absolutely amazing. After the encore they played a new song called "Spooks" which I remember as short and full of energy. I loved it. This was my favourite Radiohead concert.',
         ])->addSongs([
             'Everything in Its Right Place',
             'The National Anthem',
@@ -147,7 +147,7 @@ class ConcertsTableSeeder extends Seeder
             'country' => 'UK',
             'date' => '2008-06-24',
             'attendees' => 'Simon and Gary',
-            'description' => 'A dream come true as Radiohead play back to back concerts in Victoria Park, my local park, just 5 minutes walk from my house. Again "There There" was amazing and I heard "Planet Telex" and "The Tourist" for the first time. A treat after the encore as Thom played "Cymbal Rush".',
+            'description' => 'A dream come true as Radiohead play back to back concerts in Victoria Park, my local park, just 5 minutes walk from my house. Again "There There" was amazing and I heard "Planet Telex" and "The Tourist" for the first time. A treat after the second encore as Thom played "Cymbal Rush".',
         ])->addSongs([
             '15 Step',
             'Bodysnatchers',
@@ -184,7 +184,7 @@ class ConcertsTableSeeder extends Seeder
             'country' => 'UK',
             'date' => '2008-06-25',
             'attendees' => 'Tom and Michelle',
-            'description' => 'Night two at Victoria Park. A similar set to night one but still some songs I havn\'t heard live before including "Myxomatosis" and "Optimistic". By this stage I was able to recognise which song was coming next based on which guitar Thom picked up.',
+            'description' => 'Night two at Victoria Park. A similar set to night one but still some songs I havn\'t heard live before including "Myxomatosis" and "Optimistic". By this stage I am able to recognise which song are coming next based on which guitar Thom picked up.',
         ])->addSongs([
             'Reckoner',
             '15 Step',
@@ -294,7 +294,7 @@ class ConcertsTableSeeder extends Seeder
             'country' => 'USA',
             'date' => '2016-09-30',
             'attendees' => 'Jillian, Lissa and Ryan',
-            'description' => 'Summer 2016 as we drive down to Austin for the "Austin City Limits" music festival. The "Moon Shaped Pool" songs sound great and I hear "Exit Music" for the first time. The set ends with "Karma Police" and the crowd joins Thom for a sing-along. For a minute there...',
+            'description' => 'Summer 2016 as we drive down to Austin for the "Austin City Limits" music festival. The new "Moon Shaped Pool" songs sound great and I hear "Exit Music" for the first time. The set ends with "Karma Police" and the crowd joins Thom for a sing-along. For a minute there...',
         ])->addSongs([
             'Burn the Witch',
             'Daydreaming',
