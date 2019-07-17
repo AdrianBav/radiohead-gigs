@@ -4363,6 +4363,6 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
 
 @media (max-width: 767px) {
     #album-distribution.fixed_height_390 {
-        height: 550px;
+        height: 625px;
     }
 }
