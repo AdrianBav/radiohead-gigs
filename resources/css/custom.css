@@ -4281,10 +4281,6 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
 
 /* Tweaks to Tiles */
 
-#album-distribution-chart {
-    margin: 15px 10px 10px 0;
-}
-
 #world-map-gdp .jqvmap-zoomin,
 #world-map-gdp .jqvmap-zoomout {
     background: #1abb9c;
@@ -4347,5 +4343,26 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
     }
     #top-songs .w_15 {
         width: 20%;
+    }
+}
+
+
+#concert-album-distribution .doughnut-chart {
+    position: relative;
+    width: 90%;
+}
+#concert-album-distribution .tile_info {
+    margin-top: 1em;
+}
+
+
+#album-distribution .doughnut-chart {
+    position: relative;
+    width: 90%;
+}
+
+@media (max-width: 767px) {
+    #album-distribution.fixed_height_390 {
+        height: 550px;
     }
 }

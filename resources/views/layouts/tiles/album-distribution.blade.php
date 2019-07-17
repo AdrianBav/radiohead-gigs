@@ -9,47 +9,35 @@
     </div>
 
     <div class="x_content">
-        <table style="width:100%">
-            <tr>
-                <th style="width:37%;">
-                    <p>&nbsp;</p>
-                </th>
-                <th>
-                    <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
-                        <p class="">Album</p>
-                    </div>
-                    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
-                        <p style="text-align: right;">Distribution</p>
-                    </div>
-                </th>
-            </tr>
-            <tr>
-                <td>
+
+        <div class="row">
+            <div class="col-md-5 col-xs-12">
+                <div class="doughnut-chart">
                     <chart
                         type="doughnut"
-                        height="150" width="150"
                         :chart-data="{{ json_encode($metrics->albumDistributionChart()) }}"
-                        id="album-distribution-chart"
                     >
                     </chart>
-                </td>
-                <td>
-                    <table class="tile_info">
-                        @foreach ($metrics->albumDistribution() as $n => $album)
-                        <tr>
-                            <td>
-                                <p>
-                                    <i class="fa fa-square" style="color: {{ $metrics->albumChartColors($n) }}"></i>
-                                    {{ $album['title'] }}
-                                </p>
-                            </td>
-                            <td>{{ $album['percentage'] }}%</td>
-                        </tr>
-                        @endforeach
-                    </table>
-                </td>
-            </tr>
-        </table>
+                </div>
+            </div>
+
+            <div class="col-md-7 col-xs-12">
+                <table class="tile_info">
+                    @foreach ($metrics->albumDistribution() as $n => $album)
+                    <tr>
+                        <td>
+                            <p>
+                                <i class="fa fa-square" style="color: {{ $metrics->albumChartColors($n) }}"></i>
+                                {{ $album['title'] }}
+                            </p>
+                        </td>
+                        <td>{{ $album['percentage'] }}%</td>
+                    </tr>
+                    @endforeach
+                </table>
+            </div>
+        </div>
+
     </div>
 
 </div>

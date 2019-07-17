@@ -8,13 +8,15 @@
         <div class="clearfix"></div>
     </div>
 
-    <div class="x_content" style="margin-top: 15px;">
-        <chart
-            type="horizontalBar"
-            height="280" width="480"
-            :chart-data="{{ json_encode($metrics->albumCoverageChart()) }}"
-        >
-        </chart>
+    <div class="x_content">
+        <div class="horizontal-bar-chart">
+            <chart
+                type="horizontalBar"
+                :chart-data="{{ json_encode($metrics->albumCoverageChart()) }}"
+                maintainAspectRatio=true
+            >
+            </chart>
+        </div>
     </div>
 
 </div>

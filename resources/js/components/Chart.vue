@@ -1,6 +1,6 @@
 <template>
     <div>
-        <canvas ref="chartCanvas" :width="width" :height="height"></canvas>
+        <canvas ref="chartCanvas"></canvas>
     </div>
 </template>
 
@@ -17,14 +17,9 @@
 
             chartData: Object,
 
-            width: {
-                type: String,
-                default: "200",
-            },
-
-            height: {
-                type: String,
-                default: "200",
+            maintainAspectRatio: {
+                type: Boolean,
+                default: false,
             },
         },
 
@@ -67,7 +62,9 @@
                 data: this.chartData,
                 options: {
                     legend: false,
-                    responsive: false,
+                    responsive: true,
+                    aspectRatio: 1,
+                    maintainAspectRatio: this.maintainAspectRatio,
                     scales: ( this.type == "horizontalBar" ) ? this.percentageScales : {},
                     tooltips: ( this.type == "horizontalBar" ) ? this.barTooltips : this.doughnutTooltips,
                 },

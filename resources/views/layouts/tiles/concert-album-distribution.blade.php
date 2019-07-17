@@ -9,33 +9,35 @@
     </div>
 
     <div class="x_content">
-        <table style="width:100%">
-            <tr>
-                <td>
+
+        <div class="row">
+            <div class="col-md-8 col-xs-12">
+                <div class="doughnut-chart">
                     <chart
                         type="doughnut"
-                        height="500" width="500"
                         :chart-data="{{ json_encode($concertMetrics->albumDistributionChart()) }}"
                     >
                     </chart>
-                </td>
-                <td>
-                    <table class="tile_info">
-                        @foreach ($concertMetrics->albumDistribution() as $n => $album)
-                        <tr>
-                            <td>
-                                <p>
-                                    <i class="fa fa-square" style="color: {{ $concertMetrics->albumChartColors($n) }}"></i>
-                                    {{ $album['title'] }}
-                                </p>
-                            </td>
-                            <td>{{ $album['percentage'] }}%</td>
-                        </tr>
-                        @endforeach
-                    </table>
-                </td>
-            </tr>
-        </table>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-xs-12">
+                <table class="tile_info">
+                    @foreach ($concertMetrics->albumDistribution() as $n => $album)
+                    <tr>
+                        <td>
+                            <p>
+                                <i class="fa fa-square" style="color: {{ $concertMetrics->albumChartColors($n) }}"></i>
+                                {{ $album['title'] }}
+                            </p>
+                        </td>
+                        <td>{{ $album['percentage'] }}%</td>
+                    </tr>
+                    @endforeach
+                </table>
+            </div>
+        </div>
+
     </div>
 
 </div>
